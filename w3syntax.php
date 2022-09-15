@@ -1,4 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+
 <?php
-echo "hello world";
-//commentaa
+$color = "red";
+echo "My car is " . $color . "<br>";
+echo "My house is " . $COLOR . "<br>";
+echo "My boat is " . $coLOR . "<br>";
 ?>
+
+</body>
+</html>
