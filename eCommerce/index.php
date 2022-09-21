@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+    session_destroy();
+?>
 <html>
     <body>
         <h1 style="text-align: center;">Home Page</h1>
