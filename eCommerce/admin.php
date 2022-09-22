@@ -24,7 +24,7 @@
     {
         if($row['a_name']==$aname && $row['a_pass']==$apw){
             $exist = true;
-            $_SESSION["s_id"]=$row['a_id'];
+            $_SESSION['s_id']=$row['a_id'];
             $_SESSION["s_name"]=$row['a_name'];
             $_SESSION["s_pass"]=$row['a_pass'];
             break;
@@ -90,7 +90,7 @@
                         <td>'.$row["user_pw"].'</td>
                         <td>
                         <a href="u_delete.php?id='.$row["user_id"].'">Delete</a>
-                        <a href="u_update.php?id='.$row["user_id"].'">Update</a>
+                        <a href="update.php?id='.$row["user_id"].'">Update</a>
                         </tr>';
                         
                     }
