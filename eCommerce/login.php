@@ -16,17 +16,17 @@
     } 
 
 
-    $sql = "SELECT `user_id`,`user_name`, `user_pw` FROM `user`"; 
+    $sql = "SELECT `u_id`,`u_name`, `u_pass` FROM `user`"; 
     $result = mysqli_query($conn, $sql); // First parameter is just return of "mysqli_connect()" function
 
     if($result->num_rows > 0) {
         // output data of each row
         while($row = mysqli_fetch_assoc($result))
         {
-            if($row['user_name']==$name && $row['user_pw']==$pw){
+            if($row['u_name']==$name && $row['u_pass']==$pw){
                 $exist = true;
-                $uname = $_SESSION['s_name'] = $row['user_name'];
-                $uid = $_SESSION['s_id'] = $row['user_id'];
+                $uname = $_SESSION['s_name'] = $row['u_name'];
+                $uid = $_SESSION['s_id'] = $row['u_id'];
                 break;
             }
         }
@@ -36,6 +36,7 @@
         }
       } else {
         echo "0 results";
+        header("Refresh:0 ; url= login.html");
       }  
 ?>
 
@@ -69,6 +70,9 @@
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0)">Cart</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="index.php">Logout</a>
                 </li>
             </ul>
             <form class="d-flex">
