@@ -41,6 +41,7 @@
 ?>
 <!DOCTYPE html>
 <head>  
+    <title>Admin Page</title>
 </style>   
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,21 +49,21 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <html>
     <body>
-        <div class="text-center ">
+        <div class="text-center pt-5">
             <h2>Welcome <?php echo $_SESSION["s_name"] ?></h2>
         </div>
             <div class="container text-center p-3">
                 <div class="row">
-                    <div class="col-3 p-3 ">
+                    <div class="col-3 p-5 ">
                         <ul class="nav flex-column nav-pills nav-fill">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">User List</a>
+                            <a class="nav-link active" aria-current="page" href="adminpage.php">User List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Product List</a>
+                            <a class="nav-link" href="productpage.php">Product List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">On Cart</a>
+                            <a class="nav-link" href="#">On Cart</a>    
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php">Logout</a>
@@ -77,23 +78,28 @@
                     
                         if($result->num_rows > 0) {
                             // output data of each row
-                            echo '<table class="table table-striped">
+                            echo '<table class="table table-hover my-3">
                             <tr>
                             <th>ID</th>
                             <th>User Name</th>
-                            <th>Lastname</th>
-                            <th>Delete/Update</th>
+                            <th>Password</th>
+                            <th class="w-25">Delete/Update</th>
                             </tr>';
                             while($row = mysqli_fetch_assoc($result))
                             {
                                 echo '<tr>
-                                <td>'.$row["user_id"].'</td>
-                                <td>'.$row["user_name"].'</td>
-                                <td>'.$row["user_pw"].'</td>
-                                <td>
-                                <a href="u_delete.php?id='.$row["user_id"].'">Delete</a>
-                                <a href="update.php?id='.$row["user_id"].'">Update</a>
-                                </tr>';
+                                <td>'.$row["u_id"].'</td>
+                                <td>'.$row["u_name"].'</td>
+                                <td>'.$row["u_pass"].'</td>
+                                <td>'
+                                ?>
+                                <form method="post" action="update.php">
+                                    <input class="btn btn-info  " type="submit" name="action" value="Update"/>
+                                    <input class="btn btn-danger" type="submit" name="action" value="Delete"/>
+                                    <input type="hidden" name="id" value="<?php echo $row['u_id']; ?>"/>
+                                </form>    
+                                <?php 
+                                '</td></tr>';
                                 
                             }
                             echo '</table>';

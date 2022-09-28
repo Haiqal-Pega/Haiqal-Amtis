@@ -33,6 +33,10 @@
         if($exist != true){
             echo "<script>alert('Invalid Username or Password')</script>";
             header("Refresh:0 ; url= login.html");
+            echo "<html></html>";  // - Tell the browser there the page is done
+            flush();               // - Make sure all buffers are flushed
+            ob_flush();            // - Make sure all buffers are flushed
+            exit;
         }
       } else {
         echo "0 results";
@@ -49,12 +53,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <div class="container-fluid p-2 pt-3 bg-primary text-white text-center">
-    <h1>LAZDA eCommerce</h1>
-    <p>Resize this responsive page to see the effect!</p> 
+    <div class="container-fluid py-5 p-2  bg-info text-white text-center">
+    <h1>PC MasteRace.COM</h1>
+    <p>Buy All You Need To Build Your Perfect PC</p> 
     </div>
     <div>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <nav class="container-fluid navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
         <div class="container-fluid">
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -72,7 +76,7 @@
                 <a class="nav-link" href="javascript:void(0)">Cart</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="index.php">Logout</a>
+                <a class="nav-link" href="login.html">Logout</a>
                 </li>
             </ul>
             <form class="d-flex">
@@ -86,49 +90,40 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-sm-4">
-            <h2>About Me</h2>
-            <h5>Photo of me:</h5>
-            <div class="fakeimg">Fake Image</div>
-            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-            <h3 class="mt-4">Some Links</h3>
-            <p>Lorem ipsum dolor sit ame.</p>
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                <a class="nav-link active" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-            <hr class="d-sm-none">
+    <div class=".container-fluid text-center">
+        <div class="row align-items-start">
+            <div class="col">
+            One of three columns
             </div>
-            <div class="col-sm-8">
-            <h2>TITLE HEADING</h2>
-            <h5>Title description, Dec 7, 2020</h5>
-            <div class="fakeimg">Fake Image</div>
-            <p>Some text..</p>
-            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-
-            <h2 class="mt-5">TITLE HEADING</h2>
-            <h5>Title description, Sep 2, 2020</h5>
-            <div class="fakeimg">Fake Image</div>
-            <p>Some text..</p>
-            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            <div class="col">
+            One of three columns
+            </div>
+            <div class="col">
+            One of three columns
             </div>
         </div>
-    </div>
-
-    <div class="mt-5 p-4 bg-dark text-white text-center">
-    <p>Footer</p>
+        <div class="row align-items-center">
+            <div class="col">
+            One of three columns
+            </div>
+            <div class="col">
+            One of three columns
+            </div>
+            <div class="col">
+            One of three columns
+            </div>
+        </div>
+        <div class="row align-items-end">
+            <div class="col">
+            One of three columns
+            </div>
+            <div class="col">
+            One of three columns
+            </div>
+            <div class="col">
+            One of three columns
+            </div>
+        </div>
     </div>
 </body>
 </html>

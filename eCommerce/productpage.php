@@ -19,8 +19,8 @@
     
 ?>
 <!DOCTYPE html>
-<head> 
-    <title>Admin | eCommerce   </title>
+<head>  
+    <title>Product Page | Admin | eCommerce</title>
 </style>   
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,10 +36,10 @@
                     <div class="col-3 p-5 ">
                         <ul class="nav flex-column nav-pills nav-fill">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="adminpage.php">User List</a>
+                            <a class="nav-link " aria-current="page" href="adminpage.php">User List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="productpage.php">Product List</a>
+                            <a class="nav-link active" href="productpage.php">Product List</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">On Cart</a>    
@@ -49,35 +49,43 @@
                         </li>
                         </ul>
                     </div>
-                    <div class="col-9  p-3">
+                    <div class="col-9  p-3 ">
+                    <button type="button" onclick="location.href = 'addproduct.html';"  class="btn float-end btn-success" >ADD +</button>
                     <?php
-                        $sql = "SELECT * FROM `user`"; 
+                        $sql = "SELECT * FROM `product`"; 
                         $result = mysqli_query($conn, $sql); // First parameter is just return of "mysqli_connect()" function
                         echo "<br>";
+                        
                     
                         if($result->num_rows > 0) {
                             // output data of each row
                             echo '<table class="table table-hover my-3">
                             <tr>
                             <th>ID</th>
-                            <th>User Name</th>
-                            <th>Password</th>
+                            <th>Product Name</th>
+                            <th>Price (RM)</th>
+                            <th class="w-25">Descriptions</th>
+                            <th>Images</th>
                             <th class="w-25">Delete/Update</th>
                             </tr>';
                             while($row = mysqli_fetch_assoc($result))
                             {
+                                $pic= $row["p_image"];
                                 echo '<tr>
-                                <td>'.$row["u_id"].'</td>
-                                <td>'.$row["u_name"].'</td>
-                                <td>'.$row["u_pass"].'</td>
-                                <td>'
+                                <td>'.$row["p_id"].'</td>
+                                <td>'.$row["p_name"].'</td>
+                                <td>'.$row["p_price"].'</td>
+                                <td>'.$row["p_details"].'</td>
+                                <td> <img src="../eComProd/'.$pic.'" style="width:100px"></td>
+                                <td> '
                                 ?>
-                                <form method="post" action="update.php">
+                                <form method="post" action="updateprod.php">
                                     <input class="btn btn-info  " type="submit" name="action" value="Update"/>
                                     <input class="btn btn-danger" type="submit" name="action" value="Delete"/>
-                                    <input type="hidden" name="id" value="<?php echo $row['u_id']; ?>"/>
+                                    <input type="hidden" name="id" value="<?php echo $row['p_id']; ?>"/>
                                 </form>    
                                 <?php 
+
                                 '</td></tr>';
                                 
                             }

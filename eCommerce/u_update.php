@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <?php
-    $name = $_POST["name"];
+    $name = $_POST["name"]; 
     $pw = $_POST["pw"];
     $servername = "localhost";
     $username = "root";
@@ -27,7 +27,7 @@
 
             if($name != ""){
                 //echo "You Changed Your Name to: $name";
-                $sql = "UPDATE `user` SET `user_name`= '$name' WHERE `user_id`=$update_id";
+                $sql = "UPDATE `user` SET `u_name`= '$name' WHERE `u_id`=$update_id";
                 $res = mysqli_query($conn, $sql);
 
                 if ($res == true) {
@@ -40,7 +40,7 @@
             }
             if($pw != ""){
                 //echo "You Changed Your Name to: $name";
-                $sql = "UPDATE `user` SET `user_pw`= '$pw' WHERE `user_id`=$update_id";
+                $sql = "UPDATE `user` SET `u_pass`= '$pw' WHERE `u_id`=$update_id";
 
                 $res = mysqli_query($conn, $sql);
 
