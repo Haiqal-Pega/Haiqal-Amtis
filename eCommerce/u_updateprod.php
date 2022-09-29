@@ -1,11 +1,6 @@
 <?php
     session_start();
     $updateprod_id = $_SESSION["updateprod_id"];
-    
-?>
-<!DOCTYPE html>
-<html>
-    <?php
     $name = $_POST["pname"];
     $price = $_POST["pprice"];
     $details = $_POST["pdetails"];
@@ -14,7 +9,9 @@
     $username = "root";
     $password = "";
     $dbname = "sys";
-    ?>
+?>
+<!DOCTYPE html>
+<html>
     <body>
         <div style="text-align: center ;">
             <?php

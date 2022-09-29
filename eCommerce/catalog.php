@@ -1,12 +1,9 @@
 <?php
     session_start();
-    $name = $_POST["name"];
-    $pw = $_POST["pw"];
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "sys";
-    $exist = false;
 
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     // Check connection
@@ -15,59 +12,34 @@
         header("Location: index.html");
     } 
 
-
-    $sql = "SELECT `u_id`,`u_name`, `u_pass` FROM `user`"; 
-    $result = mysqli_query($conn, $sql); // First parameter is just return of "mysqli_connect()" function
-
-    if($result->num_rows > 0) {
-        // output data of each row
-        while($row = mysqli_fetch_assoc($result))
-        {
-            if($row['u_name']==$name && $row['u_pass']==$pw){
-                $exist = true;
-                $uname = $_SESSION['s_name'] = $row['u_name'];
-                $uid = $_SESSION['s_id'] = $row['u_id'];
-                break;
-            }
-        }
-        if($exist != true){
-            echo "<script>alert('Invalid Username or Password')</script>";
-            header("Refresh:0 ; url= login.html");
-            echo "<html></html>";  // - Tell the browser there the page is done
-            flush();               // - Make sure all buffers are flushed
-            ob_flush();            // - Make sure all buffers are flushed
-            exit;
-        }
-      } else {
-        echo "0 results";
-        header("Refresh:0 ; url= login.html");
-      }  
-
-      $sqlprod = "SELECT * FROM `product`"; 
-        $res_prod = mysqli_query($conn, $sqlprod);
+    $sqlprod = "SELECT * FROM `product`"; 
+    $res_prod = mysqli_query($conn, $sqlprod);
 ?>
 
-<html>
-    <head>
-    <title>eCommerce</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>eCommerce | Cart</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.1/dist/js/bootstrap.bundle.min.js"></script>
     </head>
-<body>
+    <body>
     <div class="container-fluid py-5  bg-primary text-white text-center">
         <h1>PC MasteRace.COM</h1>
             <p>Buy All You Need To Build Your Perfect PC</p> 
         </div>
     <div>
-    <nav class="container-fluid navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <nav class=".container-fluid navbar navbar-expand-sm navbar-light sticky-top" style="background-color: #e3f2fd">
         <div class="container-fluid">
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse nav-pills nav-fill" id="mynavbar">
+            <div class="collapse navbar-collapse nav-pills nav-fills " id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                 <a class="nav-link " href="javascript:void(0)">Profile</a>
@@ -76,7 +48,7 @@
                 <a class="nav-link active" href="catalog.php">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="cart_user.ph">Cart</a>
+                <a class="nav-link " href="cart_user.php">Cart</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="login.html">Logout</a>
