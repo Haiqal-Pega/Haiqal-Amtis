@@ -1,5 +1,5 @@
 <?php
-echo "<h1 style='text-align:center'>PHP OOP Static Method & Properties</h1>";
+echo "<h1 style='text-align:center'>PHP OOP Static Method</h1>";
 class greeting {
   public static function welcome() {
     echo "Method called without creating an instance of the class<br>";
@@ -39,5 +39,32 @@ class domainW3 extends domain {
 
 $domainW3 = new domainW3;
 echo $domainW3 -> websiteName;
+
+echo "<h1 style='text-align:center'>PHP OOP Static Properties</h1>";
+
+class pi {
+    public static $value=3.14159;
+    public function staticValue() {
+      return self::$value;
+    }
+  }
+
+class x extends pi {
+  public function xStatic() {
+    return parent::$value;
+  }
+}
+  
+    // Get static property
+    $pi = new pi();
+    echo $pi->staticValue() ."<br>"; //accessing static property from self class
+    echo pi::$value."<br>"; //directly access static properties
+
+    // Get value of static property directly via child class
+    echo x::$value."<br>";
+
+    // or get value of static property via xStatic() method
+    $x = new x();
+    echo $x->xStatic();
 ?>
 
