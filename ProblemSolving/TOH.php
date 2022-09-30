@@ -1,52 +1,55 @@
 <?php 
 
+    //create 3 arrays representing the towers of hanoi
     $a= array();
     $b= array();
     $c= array();
-    $n=15;
-    $counter=0;
+    $n=15; //number of disks
+    $counter=0; //to stop recursive //not the best to stop recursive
 
+    //initilize first tower with amount of disks
     for ($x=$n; $x>0; --$x){
         array_push($a,$x);
-    }
-    //echo "<br>A: [".implode(", ", $a)."] ";
-    //echo empty($b) ;   
+    }  //higher number means bigger disks  
     
     echo "A: [".implode(", ", $a)."] ";
     echo "B: [".implode(", ", $b)."] ";
     echo "C: [".implode(", ", $c)."] <br><br>";
+
+    //check if number of disks evven/odd
     if($n%2==0){
-        TOHe();
+        TOHe(); //algo for even disks
     }else{
-        TOHo();
+        TOHo(); //algo for odd disks
     }
 
 
     function TOHe(){
-        global $a, $b, $c, $n, $counter;
+        global $a, $b, $c, $n, $counter; 
         
-        if(empty($b) || end($a)<end($b) && !empty($a)){
-            $first = array_pop($a);
-            array_push($b,$first);
+        if(empty($b) || end($a)<end($b) && !empty($a)){ //Move between tower A and B in legal movement
+            $first = array_pop($a); 
+            array_push($b,$first); //move A to B
         }
         elseif(empty($a) ||end($a)>end($b)){
             $first = array_pop($b);
-            array_push($a, $first);
+            array_push($a, $first); //move B to A
         }
         
+        //display each array for every iteration
         echo "A: [".implode(", ", $a)."] ";
         echo "B: [".implode(", ", $b)."] ";
         echo "C: [".implode(", ", $c)."] ";
-        echo "Moves #".++$counter."<br>";
+        echo "Moves #".++$counter."<br>"; //show number of movement with counter
 
         //#####################
-        if(empty($c) ||end($a)<end($c)){
+        if(empty($c) ||end($a)<end($c)){ //Move between tower A and C in legal movement
             $sec = array_pop($a);   
-            array_push($c,$sec);
+            array_push($c,$sec); //move A to C
         }
         elseif(empty($a) || end($a)>end($c)){
             $sec = array_pop($c);
-            array_push($a, $sec);
+            array_push($a, $sec); //move C to A
         }
         
         echo "A: [".implode(", ", $a)."] ";
@@ -55,13 +58,13 @@
         echo "Moves #".++$counter."<br>";
         
         //######################
-        if(empty($b) || end($b)<end($c)){
+        if(empty($b) || end($b)<end($c)){ //Move between tower C and B in legal movement
             $tr = array_pop($b);
-            array_push($c, $tr);
+            array_push($c, $tr); //move B to C
         }
         elseif(empty($c) || end($b)>end($c)){
             $tr = array_pop($c);
-            array_push($b, $tr);
+            array_push($b, $tr); //move C to B
         }
         
         echo "A: [".implode(", ", $a)."] ";
@@ -69,13 +72,13 @@
         echo "C: [".implode(", ", $c)."] ";
         echo "Moves #".++$counter."<br>";
 
-        if($counter >= (pow(2,$n)-1)){
-            return 0;
+        if($counter >= (pow(2,$n)-1)){ //check counter reaching mimimum moves of n
+            return 0; //exiting recursive
         }
         TOHe();
     }
 
-    function TOHo(){
+    function TOHo(){ //same as above with slight diff algo
         global $a, $b, $c, $n, $counter;
         
         if(empty($c) || end($a)<end($c) && !empty($a)){
