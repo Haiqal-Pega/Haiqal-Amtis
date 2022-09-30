@@ -76,7 +76,7 @@
                 <a class="nav-link active" href="catalog.php">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="cart_user.ph">Cart</a>
+                <a class="nav-link" href="cart_user.php">Cart</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="login.html">Logout</a>
