@@ -1,5 +1,10 @@
 <?php
     session_start();
+    if(!isset($_SESSION['status'])){
+        echo "<script>alert('Please sign back in')</script>";
+        header("location:index.php");
+    }
+
     $name = $_POST["name"];
     $pw = $_POST["pw"];
     $servername = "localhost";
@@ -39,8 +44,12 @@
             exit;
         }
       } else {
-        echo "0 results";
+        echo "<script>alert('No user in DB')</script>";
         header("Refresh:0 ; url= login.html");
+        echo "<html></html>";  // - Tell the browser there the page is done
+            flush();               // - Make sure all buffers are flushed
+            ob_flush();            // - Make sure all buffers are flushed
+            exit;
       }  
 
       $sqlprod = "SELECT * FROM `product`"; 
@@ -61,13 +70,13 @@
             <p>Buy All You Need To Build Your Perfect PC</p> 
         </div>
     <div>
-    <nav class="container-fluid navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <nav class=".container-fluid navbar navbar-expand-sm navbar-light sticky-top" style="background-color: #e3f2fd">
         <div class="container-fluid">
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse nav-pills nav-fill" id="mynavbar">
+            <div class="collapse navbar-collapse nav-pills nav-fills " id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                 <a class="nav-link " href="javascript:void(0)">Profile</a>
@@ -76,10 +85,10 @@
                 <a class="nav-link active" href="catalog.php">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="cart_user.php">Cart</a>
+                <a class="nav-link " href="cart_user.php">Cart</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="login.html">Logout</a>
+                <a class="nav-link" href="index.php">Logout</a>
                 </li>
             </ul>
             <form class="d-flex">
@@ -91,7 +100,7 @@
         </div>
         </div>      
         </div>
-    </nav>
+    </nav>  
 
     <div class="container-fluid text-center">
         <div class="row first align-items-left py-4 mx-4 p-4 justify-content-center"> <!-- catalog row wrap -->

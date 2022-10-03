@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if(!isset($_SESSION['status'])){
+        echo "<script>alert('Please sign back in')</script>";
+        header("location:index.php");
+    }
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -51,7 +55,7 @@
                 <a class="nav-link " href="cart_user.php">Cart</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="login.html">Logout</a>
+                <a class="nav-link" href="index.php">Logout</a>
                 </li>
             </ul>
             <form class="d-flex">
