@@ -1,35 +1,32 @@
 <?php
     session_start();
-    if(!isset($_SESSION['status'])){
-        echo "<script>alert('Please sign back in')</script>";
-        header("location:index.php");
-    }
-    $user_id = $_SESSION['s_id'];
+    $userid = $_SESSION['s_id'];
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "sys";
     $total =0;
-
+    
     $conn = mysqli_connect($servername, $username, $password, $dbname);
-    // Check connection
-    if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+        // Check connection
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+            header("Location: index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>eCommerce | Cart</title>
+    <title>eCommerce | Receipt</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.1/dist/js/bootstrap.bundle.min.js"></script>
-    </head>
+</head>
 <body>
-    <div class="container-fluid py-5  bg-primary text-white text-center">
+<div class="container-fluid py-5  bg-primary text-white text-center">
         <h1>PC MasteRace.COM</h1>
             <p>Buy All You Need To Build Your Perfect PC</p> 
         </div>
@@ -49,7 +46,7 @@
                 <a class="nav-link " href="catalog.php">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link active" href="cart_user.php">Cart</a>
+                <a class="nav-link active" href="cart_user.php">Receipt</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="index.php">Logout</a>
@@ -62,51 +59,50 @@
         </div>
     </nav>
     <div class="container col-9  p-3 ">
-        <?php
-            $sql = "SELECT * FROM cart JOIN product ON cart.p_id=product.p_id WHERE cart.u_id=$user_id";
+    <?php
+            $sql = "SELECT * FROM product JOIN cart ON cart.p_id=product.p_id WHERE cart.u_id=$userid";
 
             $result = mysqli_query($conn, $sql);
 
                 if ($result->num_rows > 0) { 
                 $list = 0;
+                //array_push($paidcart,)
                 // output data of each row
                 echo '<table class="table table-hover my-3 text-center">
                 <tr>
                 <th>#</th>
                 <th>Product Name</th>
+                <th>Descriptions</th>
                 <th>Price (RM)</th>
-                <th class="w-25">Descriptions</th>
-                <th>Images</th>
-                <th class="w-25">Action</th>
                 </tr>';
                 while($row = mysqli_fetch_assoc($result))
                 {
+                    $paid= $row["c_id"];
+                    echo "$paid <br>" ;
                     $total += $row["p_price"];
                     $pic= $row["p_image"];
-                    echo '<tr>
-                    <td>'.++$list.'</td>
-                    <td>'.$row["p_name"].'</td>
-                    <td>'.$row["p_price"].'</td>
-                    <td class="text-start mx-4">'.$row["p_details"].'</td>
-                    <td> <img src="../eComProd/'.$pic.'" style="width:100px"></td>
-                    <td> '
-                    ?>
-                    <form method="post" action="cartdelete.php">
-                        <input class="btn btn-danger  " type="submit" name="action" value="Remove"/>
-                        <input type="hidden" name="iddelete" value="<?php echo $row['c_id']; ?>"/>
-                    </form>    
-                    <?php 
-                    '</td></tr>';
+                    echo 
+                    '<tr>
+                        <td>'.++$list.'</td>
+                        <td>'.$row["p_name"].'</td>
+                        <td>'.$row["p_details"].'</td>
+                        <td>'.$row["p_price"].'</td>
+                    </tr>';
                     
                 }
+                echo '
+                <tr>
+                <th colspan="3" class="text-end">Total Price Paid: </th>
+                <th>RM '.$total.'</th>
+                </tr>';
                 echo '</table>';
             }    
+        
+           // $sqlpaid = "DELETE FROM cart WHERE c_id = "
+
         ?>
-        <form action="receipt.php" method="post">
-            <p>Total Price to Checkout: RM <?php echo $total ?></p>
-            <input type="submit" class="btn btn-warning float-end my-2" name=checkout value="Checkout >">
-        </form>
+        <button type="button" onclick="location.href = 'login.html';"  class="btn float-end btn-info my-5" >See more product in the catalog</button>
     </div>
-    
+
 </body>
 </html>
