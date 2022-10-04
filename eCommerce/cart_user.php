@@ -62,6 +62,7 @@
     </nav>
     <div class="container col-9  p-3 ">
         <?php
+            $list=0;
             $sql = "SELECT * FROM cart JOIN product ON cart.p_id=product.p_id WHERE cart.u_id=$user_id";
 
             $result = mysqli_query($conn, $sql);
@@ -81,16 +82,16 @@
                 {
                     $pic= $row["p_image"];
                     echo '<tr>
-                    <td>'.$row["p_id"].'</td>
+                    <td>'.++$list.'</td>
                     <td>'.$row["p_name"].'</td>
                     <td>'.$row["p_price"].'</td>
                     <td>'.$row["p_details"].'</td>
                     <td> <img src="../eComProd/'.$pic.'" style="width:100px"></td>
                     <td> '
                     ?>
-                    <form method="post" action="actioncart.php">
+                    <form method="post" action="cartdelete.php">
                         <input class="btn btn-danger  " type="submit" name="action" value="Remove"/>
-                        <input type="hidden" name="id" value="<?php echo $row['c_id']; ?>"/>
+                        <input type="hidden" name="iddelete" value="<?php echo $row['c_id']; ?>"/>
                     </form>    
                     <?php 
                     '</td></tr>';
