@@ -8,25 +8,53 @@
  $dbname = "sys";
 
  $conn = mysqli_connect($servername, $username, $password, $dbname);
- $sql = "INSERT INTO `cart` ( `u_id`, `p_id`) VALUES ('$user_id','$prod_id')";
- $res = mysqli_query($conn, $sql);
- if ($res == true) {
-    //Data Inserted
-    echo "<script>alert('Succesfully Added to Cart')</script>";
-    header("Refresh:0 ; url= catalog.php");
-    echo "<html></html>";  // - Tell the browser there the page is done
-    flush();               // - Make sure all buffers are flushed
-    ob_flush();            // - Make sure all buffers are flushed
-    exit;
-} else {
-    //FAiled to Insert Data
-    echo "<script>alert('Failed to Add into Cart')</script>";
-    header("Refresh:0 ; url= catalog.php");
-    echo "<html></html>";  // - Tell the browser there the page is done
-    flush();               // - Make sure all buffers are flushed
-    ob_flush();            // - Make sure all buffers are flushed
-    exit;
-}
-
-echo $sql;
+ $itemcheck="SELECT * FROM cart WHERE u_id=$user_id AND p_id=$prod_id";
+ $resultcheck = mysqli_query($conn,$itemcheck);
+    if ($resultcheck->num_rows > 0) {
+        while($row = mysqli_fetch_assoc($resultcheck)){
+            echo $updateid=$row["c_id"];
+            $newqty = $row["c_qty"]+1;
+            $updateexisted = "UPDATE `cart` SET `c_qty`= $newqty WHERE `c_id`=$updateid";
+            $res=mysqli_query($conn,$updateexisted);
+            if ($res == true) {
+                //Data Inserted
+                echo "<script>alert('Succesfully Added to Cart')</script>";
+                header("Refresh:0 ; url= catalog.php");
+                echo "<html></html>";  // - Tell the browser there the page is done
+                flush();               // - Make sure all buffers are flushed
+                ob_flush();            // - Make sure all buffers are flushed
+                exit;
+            } else {
+                //FAiled to Insert Data
+                echo "<script>alert('Failed to Add into Cart')</script>";
+                header("Refresh:0 ; url= catalog.php");
+                echo "<html></html>";  // - Tell the browser there the page is done
+                flush();               
+                ob_flush();            
+                exit;
+            }
+        
+        }
+    
+    }else{
+        $sql = "INSERT INTO `cart` ( `u_id`, `p_id`, `c_qty`) VALUES ('$user_id','$prod_id', 1)";
+        $res = mysqli_query($conn, $sql);
+        if ($res == true) {
+            //Data Inserted
+            echo "<script>alert('Succesfully Added to Cart')</script>";
+            header("Refresh:0 ; url= catalog.php");
+            echo "<html></html>";  // - Tell the browser there the page is done
+            flush();               // - Make sure all buffers are flushed
+            ob_flush();            // - Make sure all buffers are flushed
+            exit;
+        } else {
+            //FAiled to Insert Data
+            echo "<script>alert('Failed to Add into Cart')</script>";
+            header("Refresh:0 ; url= catalog.php");
+            echo "<html></html>";  // - Tell the browser there the page is done
+            flush();               
+            ob_flush();            
+            exit;
+        }
+    }
 ?>

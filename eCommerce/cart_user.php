@@ -72,23 +72,24 @@
                 // output data of each row
                 echo '<table class="table table-hover my-3 text-center">
                 <tr>
-                <th>#</th>
                 <th>Product Name</th>
+                <th>Quantity</th>
                 <th>Price (RM)</th>
-                <th class="w-25">Descriptions</th>
+                <th class="">Descriptions</th>
                 <th>Images</th>
-                <th class="w-25">Action</th>
+                <th class="">Action</th>
                 </tr>';
                 while($row = mysqli_fetch_assoc($result))
-                {
-                    $total += $row["p_price"];
+                {   
                     $pic= $row["p_image"];
+                    $qtyprice = $row["p_price"];
+                    $total += $qtyprice*$row["c_qty"];
                     echo '<tr>
-                    <td>'.++$list.'</td>
                     <td>'.$row["p_name"].'</td>
-                    <td>'.$row["p_price"].'</td>
+                    <td>'.$row["c_qty"].' X '.$row["p_price"].'</td>
+                    <td>'.$qtyprice*$row["c_qty"].'</td>
                     <td class="text-start mx-4">'.$row["p_details"].'</td>
-                    <td> <img src="../eComProd/'.$pic.'" style="width:100px"></td>
+                    <td><img src="../eComProd/'.$pic.'" style="width:100px"></td>
                     <td> '
                     ?>
                     <form method="post" action="cartdelete.php">
@@ -100,10 +101,12 @@
                     
                 }
                 echo '</table>';
-            }    
+            } else {
+                echo "<h4>No Item in Cart</h4>";
+            }   
         ?>
+        <p><b>Price to Checkout: RM <?php echo $total ?></b> </p>
         <form action="receipt.php" method="post">
-            <p>Total Price to Checkout: RM <?php echo $total ?></p>
             <input type="submit" class="btn btn-warning float-end my-2" name=checkout value="Checkout >">
         </form>
     </div>

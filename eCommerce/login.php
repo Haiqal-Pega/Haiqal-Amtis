@@ -126,6 +126,7 @@
                                 <form method="post" action="cart.php">
                                     <input class="btn btn-success" type="submit" name="action" value="Add to cart"/>
                                     <input type="hidden" name="id" value="'.$prod_id.'"/>
+                                    In Stock: '.$catalog["p_qty"].'
                                 </form>
                         
                             </div>
@@ -137,4 +138,3 @@
     </div>
 </body>
 </html>
-

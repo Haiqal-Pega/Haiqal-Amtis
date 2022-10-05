@@ -70,24 +70,26 @@
                 // output data of each row
                 echo '<table class="table table-hover my-3 text-center">
                 <tr>
-                <th>#</th>
                 <th>Product Name</th>
                 <th>Descriptions</th>
+                <th>Quantity</th>
                 <th>Price (RM)</th>
                 </tr>';
                 while($row = mysqli_fetch_assoc($result))
                 {
-                    $paid= $row["c_id"];
-                    echo "$paid <br>" ;
                     $total += $row["p_price"];
                     $pic= $row["p_image"];
                     echo 
                     '<tr>
-                        <td>'.++$list.'</td>
                         <td>'.$row["p_name"].'</td>
                         <td>'.$row["p_details"].'</td>
-                        <td>'.$row["p_price"].'</td>
+                        <td>'.$row["c_qty"].' X '.$row["p_price"].'</td>
+                        <td>'.$row["p_price"]*$row["c_qty"].'</td>
                     </tr>';
+                    $qty = $row["p_qty"]-$row["c_qty"]; //subtracting current stock count with purchased items
+                    $idqty=$row["p_id"]; //product id to update product quantity in catalog
+                    $updateqty = "UPDATE product SET p_qty =$qty WHERE p_id=$idqty";
+                    mysqli_query($conn, $updateqty);
                     
                 }
                 echo '
@@ -98,11 +100,13 @@
                 echo '</table>';
             }    
         
-           // $sqlpaid = "DELETE FROM cart WHERE c_id = "
+            $sql = "DELETE FROM cart WHERE u_id = $userid";
+            $result = mysqli_query($conn, $sql);
+
+
 
         ?>
-        <button type="button" onclick="location.href = 'login.html';"  class="btn float-end btn-info my-5" >See more product in the catalog</button>
-    </div>
-
+        <button type="button" onclick="location.href = 'catalog.php';"  class="btn float-end btn-info my-5" >See more product in the catalog</button>
+    </div>   
 </body>
 </html>
