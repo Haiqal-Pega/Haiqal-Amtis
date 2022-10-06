@@ -1,6 +1,7 @@
 <?php
  session_start();
  $prod_id= $_POST["id"];
+ $cart_qty= $_POST["qty"];
  $user_id = $_SESSION['s_id'];
  $servername = "localhost";
  $username = "root";
@@ -12,8 +13,8 @@
  $resultcheck = mysqli_query($conn,$itemcheck);
     if ($resultcheck->num_rows > 0) {
         while($row = mysqli_fetch_assoc($resultcheck)){
-            echo $updateid=$row["c_id"];
-            $newqty = $row["c_qty"]+1;
+            $updateid=$row["c_id"];
+            $newqty = $row["c_qty"]+$cart_qty;
             $updateexisted = "UPDATE `cart` SET `c_qty`= $newqty WHERE `c_id`=$updateid";
             $res=mysqli_query($conn,$updateexisted);
             if ($res == true) {
@@ -37,7 +38,7 @@
         }
     
     }else{
-        $sql = "INSERT INTO `cart` ( `u_id`, `p_id`, `c_qty`) VALUES ('$user_id','$prod_id', 1)";
+        $sql = "INSERT INTO `cart` ( `u_id`, `p_id`, `c_qty`) VALUES ('$user_id','$prod_id', $cart_qty)";
         $res = mysqli_query($conn, $sql);
         if ($res == true) {
             //Data Inserted

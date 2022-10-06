@@ -77,8 +77,10 @@
                 </tr>';
                 while($row = mysqli_fetch_assoc($result))
                 {
-                    $total += $row["p_price"];
                     $pic= $row["p_image"];
+                    $prodid = $row["p_id"];
+                    $qtyprice = $row["p_price"];
+                    $total += $qtyprice*$row["c_qty"];
                     echo 
                     '<tr>
                         <td>'.$row["p_name"].'</td>
@@ -90,6 +92,10 @@
                     $idqty=$row["p_id"]; //product id to update product quantity in catalog
                     $updateqty = "UPDATE product SET p_qty =$qty WHERE p_id=$idqty";
                     mysqli_query($conn, $updateqty);
+
+                    $status="Pending";
+                    $sql2 = "INSERT INTO `purchase` ( `t_status`, `u_id`, `p_id`) VALUES ('$status','$userid','$prodid')";
+                    mysqli_query($conn, $sql2);
                     
                 }
                 echo '

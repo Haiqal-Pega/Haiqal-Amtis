@@ -125,8 +125,9 @@
                                 <br>Description: <br>'.$catalog["p_details"].'<br><br>
                                 <form method="post" action="cart.php">
                                     <input class="btn btn-success" type="submit" name="action" value="Add to cart"/>
+                                    <input class="text-center" style="max-width: 45px;" type="number" id="qty" name="qty" min="1" max="'.$catalog["p_qty"].'" value="1">
                                     <input type="hidden" name="id" value="'.$prod_id.'"/>
-                                    In Stock: '.$catalog["p_qty"].'
+                                    <br>In Stock: '.$catalog["p_qty"].'
                                 </form>
                         
                             </div>
