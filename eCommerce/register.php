@@ -6,26 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
     <?php
+    require 'conn.php';
     $name = $_POST["name"];
     $pw = $_POST["pw"];
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "sys";
+    $address = $_POST["address"];
+    $phone = $_POST["num"];
     ?>
     <body>
         <div style="text-align: center ;">
 
             <?php
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
-            // Check connection
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            } else {
-                echo "Connected";
-            }
-
-            $sql = "INSERT INTO `user` ( `u_name`, `u_pass`) VALUES ('$name','$pw')";
+            $sql = "INSERT INTO `user` ( `u_name`, `u_pass`, `u_add`,`u_num`) VALUES ('$name','$pw','$address','`$phone')";
 
             $res = mysqli_query($conn, $sql);
 

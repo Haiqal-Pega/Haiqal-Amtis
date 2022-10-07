@@ -6,30 +6,30 @@
 <title>User Login Page</title>
 </head>
 <html>
-    <body>
-        <div class="container text-center pt-5 ">
-            <h2>Login Page</h2> 
+    <body style="background-color: turquoise;">
+        <div style="background-color: bisque; margin-top: 10%; margin-left: 20%; margin-right: 20%; min-height: 350px;">
+            <div class="container text-center pt-5 ">
+                <h2>Login Page</h2> 
+            </div>
+            
+            <div class="container p-lg-5 mr-3" style="max-width: 75%;">
+                <form action="login.php" method="post">
+                    <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" placeholder="Enter Username" name="name" required>
+                    </div>
+                    <div class="form-group">
+                    <label >Password</label>
+                    <input type="password" class="form-control" placeholder="Password" name="pw" required>
+                    </div>
+                    <div class="container pt-4">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" onclick="location.href = 'register.html';"  class="btn float-end btn-info" >Register Here</button>
+                    </div>
+                    </form>
+            </div>
         </div>
         
-        <div class="container p-lg-5 mr-3">
-            <form action="login.php" method="post">
-                <div class="form-group">
-                  <label>Username</label>
-                  <input type="text" class="form-control" placeholder="Enter Username" name="name" required>
-                </div>
-                <div class="form-group">
-                  <label >Password</label>
-                  <input type="password" class="form-control" placeholder="Password" name="pw" required>
-                </div>
-                <div class="container pt-4">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="button" onclick="location.href = 'register.html';"  class="btn float-end btn-info" >Register Here</button>
-                </div>
-                </form>
-              
-                
-            
-        </div>
     </body>
 
 </html>
