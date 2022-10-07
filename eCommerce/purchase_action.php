@@ -22,7 +22,7 @@
 
     if ($_POST['action'] == 'Shipped') {
         $statusnew="Shipped";
-        $sql = "UPDATE `purchase` SET `t_status` =$statusnew WHERE `t_id` = $idpurchase";
+        $sql = "UPDATE `purchase` SET `t_status` = '$statusnew' WHERE `t_id` = '$idpurchase'";
         $res = mysqli_query($conn, $sql);
         if($res==true){
             echo "<script>alert('Item tagged shipped')</script>";

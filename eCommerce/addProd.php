@@ -8,6 +8,7 @@
     <?php
     $name = $_POST["pname"];
     $price = $_POST["pprice"];
+    $qty = $_POST["pqty"];
     $details = $_POST["pdetails"];
     $img = $_POST["pimg"];
     $servername = "localhost";
@@ -27,7 +28,7 @@
                 echo "Connected";
             }
 
-            $sql = "INSERT INTO `product` ( `p_name`, `p_price`, `p_details`, `p_image`) VALUES ('$name','$price','$details','$img')";
+            $sql = "INSERT INTO `product` ( `p_name`, `p_price`, `p_qty`, `p_details`, `p_image`) VALUES ('$name','$price', '$qty','$details','$img')";
 
             $res = mysqli_query($conn, $sql);
 

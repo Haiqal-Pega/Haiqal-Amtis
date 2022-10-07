@@ -33,7 +33,7 @@
 <html>
     <body>
         <div class="text-center pt-5">
-            <h2>Welcome <?php echo $_SESSION["s_name"] ?></h2>
+            <h1>Product Lists and Management</h1>
         </div>
             <div class="container text-center p-3">
                 <div class="row" >

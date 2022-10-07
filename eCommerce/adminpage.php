@@ -33,27 +33,27 @@
 <html>
     <body>
         <div class="text-center pt-5">
-            <h2>Welcome <?php echo $_SESSION["s_name"] ?></h2>
+            <h1>Welcome <?php echo $_SESSION["s_name"] ?></h1>
         </div>
             <div class="container text-center p-3">
                 <div class="row">
-                    <div class="col-3 p-5 ">
+                    <div class="col-3 p-3 " style="background-color:#3c4f49 ;">
                         <ul class="nav flex-column nav-pills nav-fill">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="adminpage.php">User List</a>
+                            <a class="nav-link text-white active" aria-current="page" href="adminpage.php">User List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="productpage.php">Product List</a>
+                            <a class="nav-link text-white" href="productpage.php">Product List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="purchase.php">Purchases</a>       
+                            <a class="nav-link text-white" href="purchase.php">Purchases</a>       
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">Logout</a>
+                            <a class="nav-link text-white" href="index.php">Logout</a>
                         </li>
                         </ul>
                     </div>
-                    <div class="col-9  p-3">
+                    <div class="col-9  p-3 " style="background-color: #e7d042;">
                     <?php
                         $sql = "SELECT * FROM `user`"; 
                         $result = mysqli_query($conn, $sql); // First parameter is just return of "mysqli_connect()" function
