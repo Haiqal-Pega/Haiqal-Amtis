@@ -30,12 +30,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.1/dist/js/bootstrap.bundle.min.js"></script>
-    </head>
+</head>
     <body>
     <div class="container-fluid py-5  bg-primary text-white text-center">
         <h1>PC MasteRace.COM</h1>
             <p>Buy All You Need To Build Your Perfect PC</p> 
-        </div>
+    </div>
     <div>
     <nav class=".container-fluid navbar navbar-expand-sm navbar-light sticky-top" style="background-color: #e3f2fd">
         <div class="container-fluid">

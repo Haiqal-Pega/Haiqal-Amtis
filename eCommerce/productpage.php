@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if(!isset($_SESSION['status'])){
+        echo "<script>alert('Please sign back in')</script>";
+        header("location:index.php");
+    }
     $_SESSION['admin']=$_SESSION['s_name'];
     $_SESSION['adminpass']=$_SESSION['s_pass'];
     $servername = "localhost";
@@ -42,7 +46,7 @@
                             <a class="nav-link active" href="productpage.php">Product List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">On Cart</a>    
+                            <a class="nav-link" href="purchase.php">Purchases</a>       
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php">Logout</a>

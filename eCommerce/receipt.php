@@ -79,6 +79,7 @@
                 {
                     $pic= $row["p_image"];
                     $prodid = $row["p_id"];
+                    $t_qty =$row["c_qty"];
                     $qtyprice = $row["p_price"];
                     $total += $qtyprice*$row["c_qty"];
                     echo 
@@ -94,7 +95,7 @@
                     mysqli_query($conn, $updateqty);
 
                     $status="Pending";
-                    $sql2 = "INSERT INTO `purchase` ( `t_status`, `u_id`, `p_id`) VALUES ('$status','$userid','$prodid')";
+                    $sql2 = "INSERT INTO `purchase` ( `t_status`, `u_id`, `p_id`, `t_qty`) VALUES ('$status','$userid','$prodid','$t_qty')";
                     mysqli_query($conn, $sql2);
                     
                 }
