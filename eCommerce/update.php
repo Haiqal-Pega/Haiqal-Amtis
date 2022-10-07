@@ -5,7 +5,11 @@ $_SESSION["update_id"] = $id = $_POST["id"];
 if ($_POST['action'] && $_POST['id']) {
     if ($_POST['action'] == 'Delete') {
         header("Refresh:0 ; url= u_delete.php");
-
+        echo "<html></html>";
+        echo "<html></html>";  // - Tell the browser there the page is done
+        flush();               // - Make sure all buffers are flushed
+        ob_flush();            // - Make sure all buffers are flushed
+        exit;
     }
   }
 

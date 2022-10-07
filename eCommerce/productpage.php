@@ -36,25 +36,25 @@
             <h2>Welcome <?php echo $_SESSION["s_name"] ?></h2>
         </div>
             <div class="container text-center p-3">
-                <div class="row">
-                    <div class="col-3 p-5 ">
-                        <ul class="nav flex-column nav-pills nav-fill">
+                <div class="row" >
+                    <div class="col-3 p-3 " style="background-color:#3c4f49 ;">
+                        <ul class="nav flex-column nav-pills nav-fill text-white">
                         <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="adminpage.php">User List</a>
+                            <a class="nav-link text-white" aria-current="page" href="adminpage.php">User List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="productpage.php">Product List</a>
+                            <a class="nav-link active text-white" href="productpage.php">Product List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="purchase.php">Purchases</a>       
+                            <a class="nav-link text-white" href="purchase.php">Purchases</a>       
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">Logout</a>
+                            <a class="nav-link text-white" href="index.php">Logout</a>
                         </li>
                         </ul>
                     </div>
-                    <div class="col-9  p-3 ">
-                    <button type="button" onclick="location.href = 'addproduct.html';"  class="btn float-end btn-success" >ADD +</button>
+                    <div class="col-9  p-3 " style="background-color: #e7d042;">
+                    <button type="button" onclick="location.href = 'addproduct.html';"  class="btn float-end btn-success my-3" >ADD +</button>
                     <?php
                         $sql = "SELECT * FROM `product`"; 
                         $result = mysqli_query($conn, $sql); // First parameter is just return of "mysqli_connect()" function
@@ -67,6 +67,7 @@
                             <tr>
                             <th>ID</th>
                             <th>Product Name</th>
+                            <th>Quantity</th>
                             <th>Price (RM)</th>
                             <th class="w-25">Descriptions</th>
                             <th>Images</th>
@@ -78,14 +79,15 @@
                                 echo '<tr>
                                 <td>'.$row["p_id"].'</td>
                                 <td>'.$row["p_name"].'</td>
+                                <td>'.$row["p_qty"].'</td>
                                 <td>'.$row["p_price"].'</td>
                                 <td>'.$row["p_details"].'</td>
                                 <td> <img src="../eComProd/'.$pic.'" style="width:100px"></td>
                                 <td> '
                                 ?>
                                 <form method="post" action="updateprod.php">
-                                    <input class="btn btn-info  " type="submit" name="action" value="Update"/>
-                                    <input class="btn btn-danger" type="submit" name="action" value="Delete"/>
+                                    <input class="btn btn-info  w-50" type="submit" name="action" value="Update"/><br>
+                                    <input class="btn btn-danger w-50" type="submit" name="action" value="Delete"/>
                                     <input type="hidden" name="id" value="<?php echo $row['p_id']; ?>"/>
                                 </form>    
                                 <?php 

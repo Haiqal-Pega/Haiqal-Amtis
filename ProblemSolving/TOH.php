@@ -4,7 +4,7 @@
     $a= array();
     $b= array();
     $c= array();
-    $n=15; //number of disks
+    $n=4; //number of disks
     $counter=0; //to stop recursive //not the best to stop recursive
 
     //initilize first tower with amount of disks
@@ -14,7 +14,7 @@
     
     echo "A: [".implode(", ", $a)."] ";
     echo "B: [".implode(", ", $b)."] ";
-    echo "C: [".implode(", ", $c)."] <br><br>";
+    echo "C: [".implode(", ", $c)."] ";
 
     //check if number of disks evven/odd
     if($n%2==0){
@@ -37,10 +37,11 @@
         }
         
         //display each array for every iteration
+        echo "<br><br>Moves #".++$counter."<br>"; //show number of movement with counter
         echo "A: [".implode(", ", $a)."] ";
         echo "B: [".implode(", ", $b)."] ";
         echo "C: [".implode(", ", $c)."] ";
-        echo "Moves #".++$counter."<br>"; //show number of movement with counter
+        
 
         //#####################
         if(empty($c) ||end($a)<end($c)){ //Move between tower A and C in legal movement
@@ -52,10 +53,11 @@
             array_push($a, $sec); //move C to A
         }
         
+        echo "<br><br>Moves #".++$counter."<br>";
         echo "A: [".implode(", ", $a)."] ";
         echo "B: [".implode(", ", $b)."] ";
         echo "C: [".implode(", ", $c)."] ";
-        echo "Moves #".++$counter."<br>";
+        
         
         //######################
         if(empty($b) || end($b)<end($c)){ //Move between tower C and B in legal movement
@@ -67,10 +69,10 @@
             array_push($b, $tr); //move C to B
         }
         
+        echo "<br><br>Moves #".++$counter."<br>";
         echo "A: [".implode(", ", $a)."] ";
         echo "B: [".implode(", ", $b)."] ";
         echo "C: [".implode(", ", $c)."] ";
-        echo "Moves #".++$counter."<br>";
 
         if($counter >= (pow(2,$n)-1)){ //check counter reaching mimimum moves of n
             return 0; //exiting recursive

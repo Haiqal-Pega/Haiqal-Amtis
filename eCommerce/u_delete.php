@@ -16,6 +16,8 @@
         header("Location: admin.html");
     }
     // sql to delete a record
+    $sql= "DELETE FROM `cart` WHERE `u_id` =$id";
+    mysqli_query($conn, $sql);
     $sql = "DELETE FROM `user` WHERE `u_id`=$id";
     
     if (mysqli_query($conn, $sql)) {
@@ -24,10 +26,10 @@
       echo "<script>alert('Something When Wrong! Record Not Deleted')</script>" . mysqli_error($conn);
     }
 
-    
+    header("Location: adminpage.php");
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <head>  
 </style>   
 </head>
@@ -100,4 +102,4 @@
             
         </div>
     </body>
-</html>
+</html> -->
