@@ -20,7 +20,7 @@
             if ($res == true) {
                 //Data Inserted
                 echo "<script>alert('Succesfully Added to Cart')</script>";
-                header("Refresh:0 ; url= catalog.php");
+                header("Refresh:0 ; url= ../User/catalog.php");
                 echo "<html></html>";  // - Tell the browser there the page is done
                 flush();               // - Make sure all buffers are flushed
                 ob_flush();            // - Make sure all buffers are flushed
@@ -28,7 +28,7 @@
             } else {
                 //FAiled to Insert Data
                 echo "<script>alert('Failed to Add into Cart')</script>";
-                header("Refresh:0 ; url= catalog.php");
+                header("Refresh:0 ; url= ../User/catalog.php");
                 echo "<html></html>";  // - Tell the browser there the page is done
                 flush();               
                 ob_flush();            
@@ -43,7 +43,7 @@
         if ($res == true) {
             //Data Inserted
             echo "<script>alert('Succesfully Added to Cart')</script>";
-            header("Refresh:0 ; url= catalog.php");
+            header("Refresh:0 ; url= ../User/catalog.php");
             echo "<html></html>";  // - Tell the browser there the page is done
             flush();               // - Make sure all buffers are flushed
             ob_flush();            // - Make sure all buffers are flushed
@@ -51,7 +51,7 @@
         } else {
             //FAiled to Insert Data
             echo "<script>alert('Failed to Add into Cart')</script>";
-            header("Refresh:0 ; url= catalog.php");
+            header("Refresh:0 ; url= ../User/catalog.php");
             echo "<html></html>";  // - Tell the browser there the page is done
             flush();               
             ob_flush();            

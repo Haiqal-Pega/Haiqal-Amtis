@@ -1,9 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION['status'])){
-        echo "<script>alert('Please sign back in')</script>";
-        header("location:index.php");
-    }
+    $_SESSION['status']="Active";
 
     $name = $_POST["name"];
     $pw = $_POST["pw"];
@@ -67,40 +64,38 @@
 <body>
     <div class="container-fluid py-5  bg-primary text-white text-center">
         <h1>PC MasteRace.COM</h1>
-            <p>Buy All You Need To Build Your Perfect PC</p> 
-        </div>
+        <p>Buy All You Need To Build Your Perfect PC</p> 
+    </div>
     <div>
-    <nav class=".container-fluid navbar navbar-expand-sm navbar-light sticky-top" style="background-color: #e3f2fd">
-        <div class="container-fluid">
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse nav-pills nav-fills " id="mynavbar">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                <a class="nav-link " href="javascript:void(0)">Profile</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link active" href="catalog.php">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link " href="cart_user.php">Cart</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="index.php">Logout</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="text" placeholder="Search">
-                <button class="btn btn-primary" type="button">Search</button>
-            </form>
-        </div>
-        </div>
-        </div>
-        </div>      
-        </div>
-    </nav>  
+        <nav class=".container-fluid navbar navbar-expand-sm navbar-light sticky-top" style="background-color: #e3f2fd">
+            <div class="container-fluid">
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-pills nav-fills " id="mynavbar">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link active" href="catalog.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link " href="../Cart/cart_user.php">Cart</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="../index.php">Logout</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="text" placeholder="Search">
+                        <button class="btn btn-primary" type="button">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
 
     <div class="container-fluid text-center">
         <div class="row first align-items-left py-4 mx-4 p-4 justify-content-center"> <!-- catalog row wrap -->
@@ -113,7 +108,7 @@
                         '<div class="col-sm-5 col-md-3 p-4 border border-1 rounded m-1" style="height: 550px;">
                             <!-- catalog picture -->
                             <div class="rounded py-2" >
-                            <img src="../eComProd/'.$prod_img.'" style="max-width:320px; max-height: 180px; width:auto;">
+                            <img src="../../eComProd/'.$prod_img.'" style="max-width:320px; max-height: 180px; width:auto;">
                             </div>
 
                              
@@ -123,7 +118,7 @@
                                 Product Name: '.$catalog["p_name"].'<br>
                                 Price: RM '.$catalog["p_price"].'<br>
                                 <br>Description: <br>'.$catalog["p_details"].'<br><br>
-                                <form method="post" action="cart.php">
+                                <form method="post" action="../Cart/cart.php">
                                     <input class="btn btn-success" type="submit" name="action" value="Add to cart"/>
                                     <input class="text-center" style="max-width: 45px;" type="number" id="qty" name="qty" min="1" max="'.$catalog["p_qty"].'" value="1">
                                     <input type="hidden" name="id" value="'.$prod_id.'"/>

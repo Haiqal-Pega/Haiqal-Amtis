@@ -113,7 +113,7 @@
 
 
         ?>
-        <button type="button" onclick="location.href = 'catalog.php';"  class="btn float-end btn-info my-5" >See more product in the catalog</button>
+        <button type="button" onclick="location.href = '../User/catalog.php';"  class="btn float-end btn-info my-5" >See more product in the catalog</button>
     </div>   
 </body>
 </html>

@@ -11,11 +11,11 @@ try {
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   echo "Connected successfully";
   if($_POST["sign"]);
-    header("Location: login.html");
+    header("Location: User/login.html");
   if($_POST["register"])
-    header("Location: register.html");
+    header("Location: User/register.html");
   if($_POST["admin"])
-    header("Location: admin.html");
+    header("Location: Admin/admin.html");
 } catch(PDOException $e) {
   echo "Connection failed: " . $e->getMessage();
 }

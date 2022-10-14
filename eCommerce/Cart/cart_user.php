@@ -27,40 +27,38 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.1/dist/js/bootstrap.bundle.min.js"></script>
-    </head>
+</head>
 <body>
     <div class="container-fluid py-5  bg-primary text-white text-center">
         <h1>PC MasteRace.COM</h1>
             <p>Buy All You Need To Build Your Perfect PC</p> 
         </div>
-    <div>
-    <nav class=".container-fluid navbar navbar-expand-sm navbar-light sticky-top" style="background-color: #e3f2fd">
-        <div class="container-fluid">
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse nav-pills nav-fills" id="mynavbar">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                <a class="nav-link " href="javascript:void(0)">Profile</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link " href="catalog.php">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link active" href="cart_user.php">Cart</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="index.php">Logout</a>
-                </li>
-            </ul>
-        </div>
-        </div>
-        </div>
-        </div>      
-        </div>
-    </nav>
+        <div>
+        <nav class=".container-fluid navbar navbar-expand-sm navbar-light sticky-top" style="background-color: #e3f2fd">
+            <div class="container-fluid">
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-pills nav-fills " id="mynavbar">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link " href="../User/catalog.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link active" href="cart_user.php">Cart</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="../index.php">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
     <div class="container col-9  p-3 ">
         <?php
             $sql = "SELECT * FROM cart JOIN product ON cart.p_id=product.p_id WHERE cart.u_id=$user_id";
@@ -89,7 +87,7 @@
                     <td>'.$row["c_qty"].' X '.$row["p_price"].'</td>
                     <td>'.$qtyprice*$row["c_qty"].'</td>
                     <td class="text-start mx-4">'.$row["p_details"].'</td>
-                    <td><img src="../eComProd/'.$pic.'" style="width:100px"></td>
+                    <td><img src="../../eComProd/'.$pic.'" style="width:100px"></td>
                     <td> '
                     ?>
                     <form method="post" action="cartdelete.php">

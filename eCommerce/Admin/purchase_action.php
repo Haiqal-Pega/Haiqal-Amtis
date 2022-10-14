@@ -1,5 +1,5 @@
 <?php
-    require 'conn.php';
+    require '../conn.php';
     if(!isset($_SESSION['status'])){
         echo "<script>alert('Please sign back in')</script>";
         header("location:index.php");

@@ -1,30 +1,19 @@
 <?php
-    session_start();
+    include '../conn.php';
     if(!isset($_SESSION['status'])){
         echo "<script>alert('Please sign back in')</script>";
         header("location:index.php");
     }
     $_SESSION['admin']=$_SESSION['s_name'];
-    $_SESSION['adminpass']=$_SESSION['s_pass'];
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "sys";
-
+    // $_SESSION['adminpass']=$_SESSION['s_pass'];
     
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-        header("Location: admin.html");
-    }
     
 
     
 ?>
 <!DOCTYPE html>
 <head> 
-    <title>Admin | eCommerce   </title>
+    <title>Purchases | Admin | eCommerce   </title>
 </style>   
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,22 +29,25 @@
                     <div class="col-3 p-3 " style="background-color:#3c4f49 ;">
                         <ul class="nav flex-column nav-pills nav-fill">
                         <li class="nav-item">
-                            <a class="nav-link text-white active" aria-current="page" href="adminpage.php">User List</a>
+                            <a class="nav-link text-white " aria-current="page" href="adminpage.php">User List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="productpage.php">Product List</a>
+                            <a class="nav-link text-white" href="../Product/productpage.php">Product List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="purchase.php">Purchases</a>       
+                            <a class="nav-link text-white active" href="purchase.php">Purchases</a>       
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="index.php">Logout</a>
+                            <a class="nav-link text-white" href="../index.php">Logout</a>
                         </li>
                         </ul>
                     </div>
                     <div class="col-9  p-3 " style="background-color: #e7d042;">
                     <?php
-                        $sql = "SELECT * FROM `user`"; 
+                        $sql = "SELECT * FROM purchase 
+                        JOIN product ON purchase.p_id=product.p_id 
+                        JOIN user ON user.u_id=purchase.u_id
+                        WHERE user.u_id=purchase.u_id"; 
                         $result = mysqli_query($conn, $sql); // First parameter is just return of "mysqli_connect()" function
                         echo "<br>";
                     
@@ -63,23 +55,25 @@
                             // output data of each row
                             echo '<table class="table table-hover my-3">
                             <tr>
-                            <th>ID</th>
-                            <th>User Name</th>
-                            <th>Password</th>
-                            <th class="w-25">Delete/Update</th>
+                            <th>Customer Name</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                            <th>Action</th>
                             </tr>';
                             while($row = mysqli_fetch_assoc($result))
                             {
                                 echo '<tr>
-                                <td>'.$row["u_id"].'</td>
                                 <td>'.$row["u_name"].'</td>
-                                <td>'.$row["u_pass"].'</td>
+                                <td>'.$row["p_name"].'</td>
+                                <td>'.$row["t_qty"].'</td>
+                                <td>'.$row["t_status"].'</td>
                                 <td>'
                                 ?>
-                                <form method="post" action="update.php">
-                                    <input class="btn btn-info  " type="submit" name="action" value="Update"/>
-                                    <input class="btn btn-danger" type="submit" name="action" value="Delete"/>
-                                    <input type="hidden" name="id" value="<?php echo $row['u_id']; ?>"/>
+                                <form method="post" action="purchase_action.php">
+                                    <input class="btn btn-success  " type="submit" name="action" value="Shipped"/>
+                                    <input class="btn btn-danger" type="submit" name="action" value="Remove"/>
+                                    <input type="hidden" name="id" value="<?php echo $row['t_id']; ?>"/>
                                 </form>    
                                 <?php 
                                 '</td></tr>';
