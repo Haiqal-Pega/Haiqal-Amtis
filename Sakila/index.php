@@ -78,9 +78,20 @@
         <div class="container my-5">
           <div class="d-flex flex-wrap justify-content-center" role="group">
             <?php // Pagination button
-              for($page_number = 1; $page_number<= $total_pages; $page_number++) {
-                echo '<a class="btn btn-outline-info btn-sm m-2" href = "index.php?page=' . $page_number . '" style="min-width:50px" aria-pressed="true">' . $page_number . ' </a>';
-              }
+                $prev = $page_number -1;
+                // $prev1 = $prev -1;
+                $next = $page_number +1;
+                // $next1 = $next +1; 
+                if($page_number != 1){
+                  echo '<a class="btn btn-outline-info btn-sm m-2" href = "index.php?page=' . 1 . '" style="min-width:50px" aria-pressed="true">' . '<< ' . ' </a>';
+                  echo '<a class="btn btn-outline-info btn-sm m-2" href = "index.php?page=' . $prev . '" style="min-width:50px" aria-pressed="true">' . '< Prev ' . ' </a>';
+                  echo '<a class="btn btn-outline-info btn-sm m-2" href = "index.php?page=' . $prev . '" style="min-width:50px" aria-pressed="true">' . $prev . ' </a>';
+                }
+                echo '<a class="btn btn-primary btn-sm m-2" href = "index.php?page=' . $page_number . '" style="min-width:50px" aria-pressed="true">' . $page_number . ' </a>';
+                echo '<a class="btn btn-outline-info btn-sm m-2" href = "index.php?page=' . $next . '" style="min-width:50px" aria-pressed="true">' . $next . ' </a>';
+                echo '<a class="btn btn-outline-info btn-sm m-2" href = "index.php?page=' . $next . '" style="min-width:50px" aria-pressed="true">' . 'Next > ' . ' </a>';
+                echo '<a class="btn btn-outline-info btn-sm m-2" href = "index.php?page=' . $total_pages . '" style="min-width:50px" aria-pressed="true">' . ' >> ' . ' </a>';
+              
             ?>
           </div>
         </div>
