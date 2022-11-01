@@ -47,7 +47,7 @@
                                     </button>
                                 </div>
                                 <div class="col-sm-12 d-flex justify-content-end">
-                                    <button type="button" onclick="location.href = 'User/register.html';"  class="btn btn-light-secondary me-1 mb-1" ><u>No account? Sign up here!</u></button>
+                                    <button type="button" onclick="location.href = 'register.php';"  class="btn btn-light-secondary me-1 mb-1" ><u>No account? Sign up here!</u></button>
                                 </div>
                             </div>
                     </div>

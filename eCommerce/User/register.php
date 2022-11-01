@@ -31,7 +31,7 @@
             ?>
             </div>
             <div>
-            <button type="button" onclick="location.href = 'login.html';"  class="btn btn-info position-absolute top-50 start-50 translate-middle" >Go to Sign In Page</button>
+            <button type="button" onclick="location.href = 'index.php';"  class="btn btn-info position-absolute top-50 start-50 translate-middle" >Go to Sign In Page</button>
        
             </div>
     </body>
