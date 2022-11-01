@@ -1,0 +1,30 @@
+<CATALOG>
+<CAR>
+    <model>Civic</model>
+    <brand>Honda</brand>
+    <type>Sedan</type>
+    <seat>5</seat>
+    <gearbox>CVT</gearbox>
+</CAR>
+<CAR>
+    <model>CRV</model>
+    <brand>Honda</brand>
+    <type>SUV</type>
+    <seat>5</seat>
+    <gearbox>CVT</gearbox>
+</CAR>
+<CAR>
+    <model>XC90 Recharge</model>
+    <brand>Volvo</brand>
+    <type>SUV</type>
+    <seat>5</seat>
+    <gearbox>Electric Motor</gearbox>
+</CAR>
+<CAR>
+    <model>Golf</model>
+    <brand>VW</brand>
+    <type>Hatchback</type>
+    <seat>2+2</seat>
+    <gearbox>DSG</gearbox>
+</CAR>
+</CATALOG>
