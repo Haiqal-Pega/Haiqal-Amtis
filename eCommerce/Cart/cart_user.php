@@ -43,7 +43,7 @@
                 <div class="collapse navbar-collapse nav-pills nav-fills " id="mynavbar">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)">Profile</a>
+                        <a class="nav-link" href="profile.php">Profile</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link " href="../User/catalog.php">Home</a>

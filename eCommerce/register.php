@@ -34,13 +34,13 @@
                                         <label>Address</label>
                                     </div>
                                     <div class="col-md-8 my-2 form-group">
-                                        <input type="text" class="form-control" placeholder="Address" name="u_add" required>
+                                        <input type="text" class="form-control" placeholder="Address" name="address" required>
                                     </div>
                                     <div class="col-md-4 my-3">
                                         <label>Mobile No.</label>
                                     </div>
                                     <div class="col-md-8 my-2 form-group">
-                                        <input type="text" class="form-control" placeholder="Mobile Number" name="u_num" required>
+                                        <input type="text" class="form-control" placeholder="Mobile Number" name="num" required>
                                     </div>
                                     <div class="col-sm-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">

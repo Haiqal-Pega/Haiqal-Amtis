@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
     <?php
-    require 'conn.php';
+    require '../conn.php';
     $name = $_POST["name"];
     $pw = $_POST["pw"];
     $address = $_POST["address"];
@@ -16,7 +16,7 @@
         <div style="text-align: center ;">
 
             <?php
-            $sql = "INSERT INTO `user` ( `u_name`, `u_pass`, `u_add`,`u_num`) VALUES ('$name','$pw','$address','`$phone')";
+            $sql = "INSERT INTO `user` ( `u_name`, `u_pass`, `u_add`,`u_num`) VALUES ('$name','$pw','$address','$phone')";
 
             $res = mysqli_query($conn, $sql);
 
@@ -31,7 +31,7 @@
             ?>
             </div>
             <div>
-            <button type="button" onclick="location.href = 'index.php';"  class="btn btn-info position-absolute top-50 start-50 translate-middle" >Go to Sign In Page</button>
+            <button type="button" onclick="location.href = '../index.php';"  class="btn btn-info position-absolute top-50 start-50 translate-middle" >Go to Sign In Page</button>
        
             </div>
     </body>

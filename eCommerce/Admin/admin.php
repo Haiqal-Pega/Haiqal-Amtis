@@ -5,8 +5,6 @@
     $password = "";
     $dbname = "sys";
     $exist=false;
-    $aname = $_POST["aname"];
-    $apw = $_POST["apw"];
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     // Check connection
     if (!$conn) {
@@ -14,30 +12,6 @@
         header("Location: admin.html");
     } 
     
-    $sql = "SELECT `a_id`, `a_name`, `a_pass` FROM `admin`"; 
-    $result = mysqli_query($conn, $sql); // First parameter is just return of "mysqli_connect()" function
-
-        
-    if($result->num_rows > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($result))
-    {
-        if($row['a_name']==$aname && $row['a_pass']==$apw){
-            $exist = true;
-            $_SESSION['s_id']=$row['a_id'];
-            $_SESSION["s_name"]=$row['a_name'];
-            $_SESSION["s_pass"]=$row['a_pass'];
-            break;
-            }
-        
-        }
-    }else {
-        echo "0 results";
-    }
-    if($exist != true){
-        echo "<script>alert('Invalid Username or Password')</script>";
-        header("Refresh:0 ; url= admin.html");
-    }
 ?>
 <!DOCTYPE html>
 <head>  
@@ -60,7 +34,7 @@
                             <a class="nav-link text-white active" aria-current="page" href="adminpage.php">User List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="../Product/productpage.php">Product List</a>
+                            <a class="nav-link text-white" href="../product/productpage.php">Product List</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="purchase.php">Purchases</a>    

@@ -1,9 +1,9 @@
 <?php
     session_start();
-    if(!isset($_SESSION['status'])){
-        echo "<script>alert('Please sign back in')</script>";
-        header("location:index.php");
-    }
+    // if(!isset($_SESSION['status'])){
+    //     echo "<script>alert('Please sign back in')</script>";
+    //     header("location:index.php");
+    // }
     $_SESSION['admin']=$_SESSION['s_name'];
     $_SESSION['adminpass']=$_SESSION['s_pass'];
     $servername = "localhost";
@@ -86,7 +86,7 @@
                                 <td> '
                                 ?>
                                 <form method="post" action="updateprod.php">
-                                    <input class="btn btn-info  w-50" type="submit" name="action" value="Update"/><br>
+                                    <input class="btn btn-info w-50" type="submit" name="action" value="Update"/><br>
                                     <input class="btn btn-danger w-50" type="submit" name="action" value="Delete"/>
                                     <input type="hidden" name="id" value="<?php echo $row['p_id']; ?>"/>
                                 </form>    
