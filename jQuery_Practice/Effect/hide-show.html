@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <h2 id="head">Hide This Using Element Selector</h2>
+    <p id="sec">This two button will act to hide and show this specific text</p>
+
+    <!-- hold id for jquery -->
+    <button id="hide">Hide</button>
+    <button id="show">Show</button>
+
+    <!--  -->
+    <button id="toggle">Toggle between hiding and showing the paragraphs</button>
+</body>
+
+</html>
+<script>
+    $(function () {
+        $("#hide").click(function () { //selector select id. action on click
+            $("#sec").hide(700);
+        });
+        $("#show").click(function () {
+            $("#sec").show(700);
+        });
+        $("#toggle").click(function () { 
+            $("#head").toggle(980);
+        });
+    }); //advisable to use id > element
+
+</script>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // jquery to hide when mouse clicked twice
+        $(document).ready(function () { //this wait the html to fully loaded before it run any jquery function
+            $("p").dblclick(function () { //selector element <p>
+                $(this).hide();
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <p>If you double-click on me, I will disappear.</p>
+    <b>Click me away!</b> <!-- this wont be affected -->
+    <p>Click me too!</p>
+
+</body>
+
+</html>
