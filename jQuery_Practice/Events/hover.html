@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#p1").hover(function () { //activate when mouse hover on aelected
+                    alert("You entered p1!"); //hover in
+                },
+                function () {
+                    alert("Bye! You now leave p1!"); //hover out
+                });
+        });
+    </script>
+</head>
+
+<body>
+
+    <button id="p1"> Hover it on me! </button>
+
+</body>
+
+</html>
