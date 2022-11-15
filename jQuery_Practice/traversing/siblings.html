@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .siblings * {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                $("h2").nextUntil("h5").css({ //apply after element h2 till elemtn h5
+                    "color": "red",
+                    "border": "2px solid red"
+                });
+            });
+            $("#btn1").click(function () {
+                $("h3").nextAll().css({ //apply after element h3
+                    "color": "red",
+                    "border": "2px solid red"
+                });
+            });
+            $("#btn2").click(function () {
+                $("h3").next().css({ //apply only the next element
+                    "color": "red",
+                    "border": "2px solid red"
+                });
+            });
+            $("#btn3").click(function () {
+                $("h2").siblings("p").css({ //find siblings of h2 that is also element p
+                    "color": "red",
+                    "border": "2px solid red"
+                });
+            });
+            $("#btn4").click(function () {
+                $("h2").siblings().css({ //find siblings of h2 
+                    "color": "red",
+                    "border": "2px solid red"
+                });
+            });
+        });
+    </script>
+</head>
+
+
+<body>
+    <button id="btn">nextUntil() from h2 to h5</button>
+    <button id="btn1">nextAll() from h3</button>
+    <button id="btn2">next() from h3</button>
+    <button id="btn3">siblings() of h2 that is element p</button>
+    <button id="btn4">siblings() of h2</button>
+    <div class="siblings">
+        <div>div (parent)
+            <p>p</p>
+            <span>span</span>
+            <div>
+                <p>another paragraph</p>
+            </div>
+            <h2>h2</h2>
+            <h3>h3</h3>
+            <h4>h4</h4>
+            <h5>h5</h5>
+            <h6>h6</h6>
+            <p>p</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
