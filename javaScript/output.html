@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <button style="margin-bottom: 8px" type="button" onclick="document.write('Page have been overwrited')">HTML button with JS function onclick</button>
+    <br><button onclick="window.print()">HTML button with JS print</button>
+
+    <h1>My First Web Page</h1>
+    <p>My First Paragraph</p>
+
+    <p id="demo">What ever here will be replaced</p>
+
+    <p>Press F12 or inspect page to see JS fx console.log</p>
+
+
+
+    <script>
+        document.getElementById("demo").innerHTML = "this paragraph is from JS";
+        //getElementbyId find the id in html script and change it to specified content
+
+        document.write("This paragraph uses document.write()");
+        //this function should not be called after the page is done loaded
+
+        window.alert('JS f(x) to pop up alert message using window.alert()');
+        //this fx to use alert popup
+        //also work without 'windows.'
+
+        console.log('This is written in JS console.log');
+    </script>
+
+</body>
+
+</html>
