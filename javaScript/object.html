@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>JavaScript Objects</h2>
+
+    <p id="demo"></p>
+    <p id="demo1"></p>
+
+    <script>
+        // Create an object:
+        const person = [];
+        person[0] = {
+            firstName: "John",
+            lastName: "Doe",
+            id: "5566",
+            fullName: function () {
+                return this.firstName + " " + this.lastName;
+            }
+        };
+        person[1] = {
+            firstName: "Minah",
+            lastName : "Mindon",
+            id       : "5567",
+            fullName : function() {
+              return this.firstName + " " + this.lastName; //this refer to the current object
+            }
+          };    
+
+        // Display some data from the object:
+        document.getElementById("demo").innerHTML =
+            person[0].fullName() + " is " + person[0].id;
+        document.getElementById("demo1").innerHTML =
+            person[1].firstName + " is " + person[1].id;
+    </script>
+
+</body>
+
+</html>
