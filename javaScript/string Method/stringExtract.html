@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>JavaScript Strings</h1>
+    <h2>The slice() Method</h2>
+
+    <p>
+        text = "Apple, Banana, Kiwi"<br>
+        slice(7,13)<br> 
+        The sliced (extracted) part of the string is:
+        <span id="slice1"></span>
+    </p>
+    <p>
+        text = "Apple, Banana, Kiwi"<br>
+        slice(-12)<br> 
+        The sliced (extracted) part of the string is:<span id="slice2"></span>
+    </p>
+
+    <h2>The substring() Method</h2>
+    <p>
+        text = "Apple, Banana, Kiwi"<br>
+        substring(10)<br> 
+        The substring() method extract a part of a string and returns the extracted parts in a new string:
+        <span id="substring"></span>
+    </p>
+
+    <h2>The substr() Method</h2>
+    <p>
+        text = "Apple, Banana, Kiwi"<br>
+        substr(5,8)<br> 
+        The substr() method extract a part of a string and returns the extracted parts in a new string:
+        <span id="substr"></span>
+    </p>
+    
+    <script>
+        let text = "Apple, Banana, Kiwi";
+        let part1 = text.slice(7,13);
+        let part2 = text.slice(-12);
+        let part3 = text.substring(10);
+        let part4 = text.substr(5,8);
+        //different method same principle
+        //two param to extract between
+        //one param will extract to end
+        //negative start from end
+        document.getElementById("slice1").innerHTML = part1; 
+        document.getElementById("slice2").innerHTML = part2; 
+        document.getElementById("substring").innerHTML = part3; 
+        document.getElementById("substr").innerHTML = part4; 
+    </script>
+</body>
+
+</html>

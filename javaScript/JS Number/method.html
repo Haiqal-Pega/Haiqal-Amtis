@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>JavaScript Number Methods</h2>
+    <hr>
+    <h3>The toString() method converts a number to a string.</h3>
+    <p id="demo"></p>
+    <hr>
+
+    <h3>The toExponential() method returns a string, with the number rounded and written using exponential notation.
+    </h3>
+    <p>An optional parameter defines the number of digits behind the decimal point.</p>
+    <p id="demo1"></p>
+    <hr>
+
+    <h3>The toFixed() method rounds a number to a given number of digits.
+    </h3>
+    <p>For working with money, toFixed(2) is perfect.</p>
+    <p id="demo2"></p>
+    <hr>
+
+    <h3>The toPrecision() method returns a string, with a number written with a specified length:
+    </h3>
+    <p id="demo3"></p>
+    <hr>
+
+    <h3>The valueOf() method returns a number as a number:
+    </h3>
+    <p id="demo4"></p>
+    <hr>
+
+    <h3>The Number() method converts variables to numbers:
+    </h3>
+    <p id="demo5"></p>
+    <hr>
+
+    <h3>The global JavaScript function parseInt() converts strings to numbers:
+    </h3>
+    <p id="demo6"></p>
+    <hr>
+
+    <script>
+        let x = 123;
+        document.getElementById("demo").innerHTML =
+            "let x = 123<br>" +
+            "x.toString() = " + x.toString() + "<br>" +
+            "(123).toString() = " + (123).toString() + "<br>" +
+            "(100 + 23).toString() = " + (100 + 23).toString();
+
+        document.getElementById("demo4").innerHTML =
+            "let x = 123<br>" +
+            "x.valueOf() : " + x.valueOf() + "<br>" +
+            "(123).valueOf() : " + (123).valueOf() + "<br>" +
+            "(100 + 23).valueOf() : " + (100 + 23).valueOf();
+
+        let x1 = 9.656;
+        document.getElementById("demo1").innerHTML =
+            "let x1 = 9.656<br>" +
+            "x1.toExponential() : " + x1.toExponential() + "<br>" +
+            "x1.toExponential(2) : " + x1.toExponential(2) + "<br>" +
+            "x1.toExponential(4) : " + x1.toExponential(4) + "<br>" +
+            "x1.toExponential(6) : " + x1.toExponential(6);
+
+        document.getElementById("demo2").innerHTML =
+            "let x1 = 9.656<br>" +
+            "x1.toFixed(0)" + x1.toFixed(0) + "<br>" +
+            "x1.toFixed(2)" + x1.toFixed(2) + "<br>" +
+            "x1.toFixed(4)" + x1.toFixed(4) + "<br>" +
+            "x1.toFixed(6)" + x1.toFixed(6);
+
+        document.getElementById("demo3").innerHTML =
+            "let x1 = 9.656<br>" +
+            "x1.toPrecision() : " + x1.toPrecision() + "<br>" +
+            "x1.toPrecision(2) : " + x1.toPrecision(2) + "<br>" +
+            "x1.toPrecision(4) : " + x1.toPrecision(4) + "<br>" +
+            "x1.toPrecision(6) : " + x1.toPrecision(6);
+
+        document.getElementById("demo5").innerHTML =
+            "Number(true) : " + Number(true) + "<br>" +
+            "Number(false) : " + Number(false) + "<br>" +
+            "Number('10') : " + Number("10") + "<br>" +
+            "Number('  10') : " + Number("  10") + "<br>" +
+            "Number('10  ') : " + Number("10  ") + "<br>" +
+            "Number(' 10  ') : " + Number(" 10  ") + "<br>" +
+            "Number('10.33') : " + Number("10.33") + "<br>" +
+            "Number('10,33') : " + Number("10,33") + "<br>" +
+            "Number('10 33') : " + Number("10 33") + "<br>" +
+            "Number('John') : " + Number("John");
+
+        document.getElementById("demo6").innerHTML =
+            "parseInt('-10') : " + parseInt("-10") + "<br>" +
+            "parseInt('-10.33') : " + parseInt("-10.33") + "<br>" +
+            "parseInt('10') : " + parseInt("10") + "<br>" +
+            "parseInt('10.33') : " + parseInt("10.33") + "<br>" +
+            "parseInt('10 6') : " + parseInt("10 6") + "<br>" +
+            "parseInt('10 years') : " + parseInt("10 years") + "<br>" +
+            "parseInt('years 10') : " + parseInt("years 10");
+    </script>
+
+</body>
+
+</html>

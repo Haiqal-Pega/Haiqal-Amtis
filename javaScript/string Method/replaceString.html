@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>JavaScript String Methods</h1>
+    <p>Replace "Microsoft" with "W3Schools" in the paragraph below:</p>
+
+    <button onclick="myFunction()">Try it</button>
+    <p id="demo">Please visit Microsoft!</p>
+    <hr>
+
+    <button onclick="myFunction1()">Try it</button>
+    <p>replace() will only replace first match</p>
+    <p id="demo1">Please visit Microsoft and Microsoft!</p>
+    <hr>
+
+    <button onclick="myFunction2()">Try it</button>
+    <p>To replace case insensitive, use a regular expression with an /i flag (insensitive): /MICROSOFT/i</p>
+    <p id="demo2">Please visit Microsoft !</p>
+    <hr>
+
+    <button onclick="myFunction3()">Try it</button>
+    <p>To replace all matches, use a regular expression with a /g flag (global match): /Microsoft/g
+        <br>this will not ignore case-sensitive
+    </p>
+    <p id="demo3">Please visit Microsoft and Microsoft!</p>
+    <hr>
+
+    <button onclick="myFunction4()">Try it</button>
+    <p>ES2021 intoduced the string method replaceAll()</p>
+    replace all cats to dogs and Cats to Dogs
+    <p id="demo4">I love cats. Cats are very easy to love. Cats are very popular.
+    </p>
+    <hr>
+
+
+    <script>
+        function myFunction() {
+            let text = document.getElementById("demo").innerHTML; //retrieve string from html and assign into js var
+            document.getElementById("demo").innerHTML =
+                text.replace("Microsoft", "W3Schools");
+        }
+        function myFunction1() {
+            let text = document.getElementById("demo1").innerHTML; //retrieve string from html and assign into js var
+            document.getElementById("demo1").innerHTML =
+                text.replace("Microsoft", "W3Schools");
+        }
+        function myFunction2() {
+            let text = document.getElementById("demo2").innerHTML; //retrieve string from html and assign into js var
+            document.getElementById("demo2").innerHTML =
+                text.replace(/MICROSOFT/i, "W3Schools");
+        }
+        function myFunction3() {
+            let text = document.getElementById("demo3").innerHTML; //retrieve string from html and assign into js var
+            document.getElementById("demo3").innerHTML =
+                text.replace(/Microsoft/g, "W3Schools");
+        }
+        function myFunction4() {
+            let text = document.getElementById("demo4").innerHTML;
+            text = text.replaceAll("Cats", "Dogs");
+            text = text.replaceAll("cats", "dogs");
+            document.getElementById("demo4").innerHTML = text;   
+        }
+    </script>
+
+</body>
+
+</html>

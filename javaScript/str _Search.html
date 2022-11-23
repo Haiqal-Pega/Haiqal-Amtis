@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>JavaScript Strings Search</h1>
+    <hr>
+    <ul>
+        <li>indexOf()</li>
+        <li>lastIndexOf()</li>
+        <li>search()</li>
+        <ul>
+            <li>string in a string</li>
+            <li>regular expression</li>
+        </ul>
+        <li>match()</li>
+        <li>matchAll</li>
+    </ul>
+    <hr>
+    <h4>Text in use: "Please locate where 'locate' occurs!"</h4>
+    <h4 style="display: none;" id="text">Please locate where 'locate' occurs!</h4>
+
+    <p>
+        The position of the first occurrence of "locate" is:
+        <button id="demo" onclick="index()">indexOf('locate')</button>
+    </p>
+
+    <p>
+        Return the position of the last occurrence of a specified text:
+        <button id="demo1" onclick="lastindex()">lastIndexOf('locate')</button>
+    </p>
+    
+    <p>
+        Return the position of the first occurrence of a string in a string:
+        <button id="demo2" onclick="searchstr()">search('locate')</button>
+    </p>
+    
+    <p>
+        Return the position of the first occurrence of a regular expression:
+        <button id="demo3" onclick="searchstr1()">search(/locate/)</button>
+    </p>
+    <hr>
+    
+    <h4>Text in use: "The rain in SPAIN stays mainly in the plain"</h4>
+    <h4 style="display: none;" id="text1">The rain in SPAIN stays mainly in the plain</h4>
+    
+    <p>
+        Perform a search for "ain":
+        <button id="demo4" onclick="match1()">match("ain")</button>
+    </p>
+
+    <p>
+        Perform a global search for "ain":
+        <button id="demo5" onclick="match2()">match(/ain/g)</button>
+    </p>
+
+    <p>
+        Perform a global, case-insensitive search for "ain":
+        <button id="demo6" onclick="match3()">match(/ain/gi)</button>
+    </p>
+    <hr>
+
+    <h4>Text in use: "I love cats. Cats are very easy to love. Cats are very popular."</h4>
+    <h4 style="display: none;" id="text2">I love cats. Cats are very easy to love. Cats are very popular.</h4>
+    
+    <p>
+        method matchAll().
+        <button id="demo7" onclick="matchAll1()">matchAll("Cats")</button>
+    </p>
+    <p>
+        matchAll() (global).
+        <button id="demo8" onclick="matchAll2()">matchAll(/Cats/g) Global</button>
+    </p>
+    <p>
+        matchAll() (global and case-insensitive).
+        <button id="demo9" onclick="matchAll3()">matchAll(/Cats/gi) Global case-insensitive</button>
+    </p>
+    <hr>
+
+    <h4>Text in use: "Hello world, welcome to the universe."</h4>
+    <h4 style="display: none;" id="text3">Hello world, welcome to the universe.</h4>
+
+    <p>
+        Check if a string includes "world":
+        <button id="demo10" onclick="include1()">includes("world")</button>
+    </p>
+    <p>
+        Check if a string includes "world":
+        <button id="demo11" onclick="include2()">includes("world",12)</button>
+    </p>
+    <p>
+        Check if a string starts with "Hello"
+        <button id="demo12" onclick="startswith1()">startsWith("Hello")</button>
+    </p>
+    <p>
+        Check if a string starts with "world":
+        <button id="demo13" onclick="startswith2()">startsWith("world")</button>
+    </p>
+
+    <script>
+        let text = document.getElementById("text").innerHTML;
+        let text1 = document.getElementById("text1").innerHTML;
+        let text2 = document.getElementById("text2").innerHTML;
+        let text3 = document.getElementById("text3").innerHTML;
+
+        const myArr1 = text1.match("ain");
+        const myArr2 = text1.match(/ain/g);
+        const myArr3 = text1.match(/ain/gi);
+
+        const iterator = text2.matchAll("Cats");
+        const iterator1 = text2.matchAll(/Cats/g);
+        const iterator2 = text2.matchAll(/Cats/gi);
+        
+        function index() {
+            document.getElementById("demo").innerHTML = text.indexOf("locate");
+        }
+        function lastindex() {
+            document.getElementById("demo1").innerHTML = text.lastIndexOf("locate");
+        } 
+        function searchstr() {
+            document.getElementById("demo2").innerHTML = text.search(/locate/);
+        } 
+        function searchstr1() {
+            document.getElementById("demo3").innerHTML = text.search(/locate/);
+        } 
+        function match1(){
+            document.getElementById("demo4").innerHTML = myArr1.length + " " + myArr1;
+        }
+        function match2(){
+            document.getElementById("demo5").innerHTML = myArr2.length + " " + myArr2;
+        }
+        function match3(){
+            document.getElementById("demo6").innerHTML = myArr3.length + " " + myArr3;
+        }
+        function matchAll1(){
+            document.getElementById("demo7").innerHTML = Array.from(iterator);
+        }
+        function matchAll2(){
+            document.getElementById("demo8").innerHTML = Array.from(iterator1);
+        }
+        function matchAll3(){
+            document.getElementById("demo9").innerHTML = Array.from(iterator2);
+        }
+        function include1(){
+            document.getElementById("demo10").innerHTML = text3.includes("world"); //case-sensitive //NOT supported in IE
+        }
+        function include2(){
+            document.getElementById("demo11").innerHTML = text3.includes("world",12); //starts checking after 12th indices
+        }
+        function startswith1(){
+            document.getElementById("demo12").innerHTML = text3.startsWith("Hello"); //case sensitive //"hello" will return false
+        }
+        function startswith2(){
+            document.getElementById("demo13").innerHTML = text3.startsWith("world"); //return false
+        }
+    </script>
+
+</body>
+
+</html>

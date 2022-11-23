@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>JavaScript Numbers</h1>
+    <hr>
+    <h2>Integer Precision</h2>
+
+    <p>Integers (numbers without a period or exponent notation) are accurate up to 15 digits:</p>
+    let x = 999999999999999;
+    let y = 9999999999999999; <br>
+    <button onclick="demo1()"> DEMO 1 </button>
+    <p id="demo1"></p>
+    <hr>
+
+    <h2>Floating Precision</h2>
+    <p>Floating point arithmetic is not always 100% accurate.</p>
+    <button onclick="demo2()"> DEMO 2</button>
+    <p id="demo2.1"></p>
+    <p>But it helps to multiply and divide: </p>
+    <p id="demo2.2"></p>
+    <hr>
+
+    <h2>The toString() method</h2>
+    <p>The toString() method can output numbers from base 2 to 36:</p>
+    <button onclick="demo3()">toString() Method</button>
+    <p id="demo3" ></p>
+
+
+    <script>
+        function demo1() {
+            let x = 999999999999999;
+            let y = 9999999999999999;
+            document.getElementById("demo1").innerHTML = "x: " + x + "<br>y: " + y;
+        }
+        function demo2() {
+            let x = 0.2 + 0.1;
+            document.getElementById("demo2.1").innerHTML = "0.2 + 0.1 = " + x;
+            let y = (0.2 * 10 + 0.1 * 10) / 10;
+            document.getElementById("demo2.2").innerHTML = "0.2 + 0.1 = " + y;
+        }
+        function demo3() {
+            let myNumber = 32;
+            document.getElementById("demo3").innerHTML =
+                "Decimal 32 = " + "<br><br>" +
+
+                "Hexatrigesimal (base 36): " + myNumber.toString(36) + "<br>" +
+                "Duotrigesimal (base 32): " + myNumber.toString(32) + "<br>" +
+                "Hexadecimal (base 16): " + myNumber.toString(16) + "<br>" +
+                "Duodecimal (base 12): " + myNumber.toString(12) + "<br>" +
+                "Decimal (base 10): " + myNumber.toString(10) + "<br>" +
+                "Octal (base 8): " + myNumber.toString(8) + "<br>" +
+                "Binary (base 2): " + myNumber.toString(2);
+        }
+
+    </script>
+
+</body>
+
+</html>
