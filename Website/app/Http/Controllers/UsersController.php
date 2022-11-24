@@ -4,17 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $legit = 0;
+        $email = $request->email;
+        $password = $request->password;
+        $users = DB::table('users')->select('*')->get();
+        foreach ($users as $user => $key) {
+            if ($email == $key->email) {
+                if ($password == $key->password)
+                    $legit = 1;
+
+                if ($legit == 1) {
+                    if ($key->role == 'R001')
+                        return view('users.index');
+                    else
+                        return redirect(route('login'));
+                }
+            } else
+                return redirect(route('login'));
+        }
     }
 
     /**
@@ -35,7 +54,17 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'firstName' => 'required',
+            'lastName' => 'nullable',
+            'email' => 'required',
+            'password' => 'required',
+            'address' => 'nullable',
+            'dob' => 'nullable'
+        ]);
+        Users::create($validate);
+        // DB::insert('insert into users (firstName,) values (?, ?)', [1, 'Dayle']);
+        return redirect(route('login'));
     }
 
     /**

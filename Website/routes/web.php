@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', function () {
     return view('login');
-});
+})->name('login');
+Route::post('/index', [App\Http\Controllers\UsersController::class, 'index'])->name('users.index');
 Route::get('/register', [App\Http\Controllers\UsersController::class, 'create'])->name('users.register');
 Route::get('/store', [App\Http\Controllers\UsersController::class, 'store'])->name('users.store');
