@@ -26,14 +26,31 @@ class UsersController extends Controller
                     $legit = 1;
 
                 if ($legit == 1) {
-                    if ($key->role == 'R001')
-                        return view('users.index');
-                    else
+                    if ($key->role == 'R001') {
+                        $id = $key->id;
+                        $user = DB::table('users')->select('*')->where('id', '=', $id)->get();
+                        return view('users.index', compact('user'));
+                    } elseif ($key->role == 'R000') {
+                        $id = $key->id;
+                        $user = DB::table('users')->select('*')->where('id', '=', $id)->get();
+                        return view('users.admin', compact('user'));
+                    } else
                         return redirect(route('login'));
                 }
-            } else
-                return redirect(route('login'));
+            }
         }
+        return redirect(route('login'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function admin($id)
+    {
+        $user = DB::table('users')->select('*')->where('id', '=', $id)->get();
+        return view('users.admin', compact('user'));
     }
 
     /**
@@ -62,8 +79,11 @@ class UsersController extends Controller
             'address' => 'nullable',
             'dob' => 'nullable'
         ]);
-        Users::create($validate);
-        // DB::insert('insert into users (firstName,) values (?, ?)', [1, 'Dayle']);
+
+        if ($users = Users::create($validate)) {
+            $users->role = 'R001';
+        }
+        $users->save();
         return redirect(route('login'));
     }
 
