@@ -21,11 +21,14 @@ Route::get('/', function () {
 })->name('login');
 
 Route::post('/index', [App\Http\Controllers\UsersController::class, 'index'])->name('users.index');
-Route::get('/admin/{id}', [App\Http\Controllers\UsersController::class, 'admin'])->name('users.admin');
+Route::get('/admin', [App\Http\Controllers\UsersController::class, 'admin'])->name('users.admin');
 Route::get('/register', [App\Http\Controllers\UsersController::class, 'create'])->name('users.register');
 Route::get('/store', [App\Http\Controllers\UsersController::class, 'store'])->name('users.store');
 
 Route::get('/index', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
 Route::get('/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');
 Route::get('/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('products.store');
+Route::get('/edit/{id}', [App\Http\Controllers\ProductsController::class, 'edit'])->name('products.edit');
+Route::post('/update/{id}', [App\Http\Controllers\ProductsController::class, 'update'])->name('products.update');
 Route::get('/products', [App\Http\Controllers\ProductsController::class, 'admin'])->name('products.admin');
+Route::get('/destroy/{id}', [App\Http\Controllers\ProductsController::class, 'destroy'])->name('products.destroy');

@@ -11,34 +11,34 @@
 </head>
 
 <body>
-    @foreach ($user as $admin)
+    {{-- @foreach ($user as $admin) --}}
         <header>
             <div class="bg-info p-4 text-center text-white">
                 <h2>WEBSITE</h2>
-                <h5>Welcome {{ $firstName = $admin->firstName }}</h5>
+                {{-- <h5>Welcome {{ $firstName = $admin->firstName }}</h5> --}}
                 @php
                     
                 @endphp
             </div>
         </header>
-    @endforeach
+    {{-- @endforeach --}}
     <div class=".container px-2">
         <div class="row mt-3">
             <div class="col-2 p-2" style="height: 100vh">
                 <ul class="nav flex-column ">
                     <li class="nav-item">
                         <a class="nav-link btn btn-outline-info py-2 mb-1 active"
-                            href="{{ route('users.admin', $id) }}">Dashboard</a>
+                            href="{{ route('users.admin') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-info py-2 mb-1" href="{{ route('products.admin', $id) }}">Manage
+                        <a class="nav-link btn btn-outline-info py-2 mb-1" href="{{ route('products.admin') }}">Manage
                             Product</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-outline-info py-2 mb-1" href="#">Manager User</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-info py-2 mb-1" href="#">Logout</a>
+                        <a class="nav-link btn btn-outline-info py-2 mb-1" href="{{ route('login') }}">Logout</a>
                     </li>
                 </ul>
             </div>

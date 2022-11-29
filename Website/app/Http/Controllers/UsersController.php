@@ -31,7 +31,7 @@ class UsersController extends Controller
                         $user = DB::table('users')->select('*')->where('id', '=', $id)->get();
                         return view('users.index', compact('user'));
                     } elseif ($key->role == 'R000') {
-                        $id = $key->id;
+                        $id = $key->id; 
                         $user = DB::table('users')->select('*')->where('id', '=', $id)->get();
                         return view('users.admin', compact('user'));
                     } else
@@ -47,10 +47,10 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function admin($id)
+    public function admin()
     {
-        $user = DB::table('users')->select('*')->where('id', '=', $id)->get();
-        return view('users.admin', compact('user'));
+        // $user = DB::table('users')->select('*')->where('id', '=', $id)->get();
+        return view('users.admin');
     }
 
     /**
@@ -80,7 +80,7 @@ class UsersController extends Controller
             'dob' => 'nullable'
         ]);
 
-        if ($users = Users::create($validate)) {
+        if($users = Users::create($validate)) {
             $users->role = 'R001';
         }
         $users->save();

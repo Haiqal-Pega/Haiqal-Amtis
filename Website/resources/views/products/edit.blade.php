@@ -45,8 +45,8 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal" action="{{ route('products.store') }}"
-                                    method="get">
+                                <form class="form form-horizontal" action="{{ route('products.update',$products->id) }}"
+                                    method="POST">
                                     @csrf
                                     <div class="form-body">
                                         <div class="row">
@@ -56,7 +56,7 @@
                                             </div>
                                             <div class="col-md-8 mb-1 form-group">
                                                 <input type="text" class="form-control" name="name"
-                                                    placeholder="First Name">
+                                                    value="{{ $products->name }}" readonly>
                                             </div>
 
                                             {{-- Field for Price --}}
@@ -65,7 +65,7 @@
                                             </div>
                                             <div class="col-md-8 mb-1 form-group">
                                                 <input type="text" class="form-control" name="price"
-                                                    placeholder="Product Price">
+                                                    value="{{ $products->price }}">
                                             </div>
 
                                             {{-- Field for Qty --}}
@@ -74,7 +74,7 @@
                                             </div>
                                             <div class="col-md-8 mb-1 form-group">
                                                 <input type="text" class="form-control" name="qty"
-                                                    placeholder="Product Quantity">
+                                                    value="{{ $products->qty }}">
                                             </div>
 
                                             {{-- Field for details --}}
@@ -82,7 +82,7 @@
                                                 <label>Product Details</label>
                                             </div>
                                             <div class="col-md-8 mb-1 form-group">
-                                                <textarea type="text" class="form-control" rows="3" name="details"></textarea>
+                                                <textarea type="text" class="form-control" rows="3" name="details">{{ $products->details }}</textarea>
                                             </div>
 
                                             {{-- Field for image --}}
@@ -91,6 +91,7 @@
                                             </div>
                                             <div class="col-md-8 mb-1 form-group">
                                                 <input type="file" class="form-control" name="img">
+                                                <p>Current Image File: {{ $products->img }}</p>
                                             </div>
 
                                             <div class="col-sm-12 d-flex justify-content-end">
