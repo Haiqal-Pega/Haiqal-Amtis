@@ -33,7 +33,7 @@
                         <a class="nav-link  btn btn-outline-info py-2 mb-1" href="#">Manager User</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  btn btn-outline-info py-2 mb-1" href="#">Logout</a>
+                        <a class="nav-link  btn btn-outline-info py-2 mb-1" href="{{route('login')}}">Logout</a>
                     </li>
                 </ul>
             </div>

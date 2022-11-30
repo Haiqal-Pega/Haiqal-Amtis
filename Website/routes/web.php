@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::post('/index', [App\Http\Controllers\UsersController::class, 'index'])->name('users.index');
 Route::get('/admin', [App\Http\Controllers\UsersController::class, 'admin'])->name('users.admin');
 Route::get('/register', [App\Http\Controllers\UsersController::class, 'create'])->name('users.register');
-Route::get('/store', [App\Http\Controllers\UsersController::class, 'store'])->name('users.store');
+Route::post('/store', [App\Http\Controllers\UsersController::class, 'store'])->name('users.store');
 
 Route::get('/index', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
 Route::get('/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');

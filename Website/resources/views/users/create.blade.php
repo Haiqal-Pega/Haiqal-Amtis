@@ -33,8 +33,8 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <h2 class="fw-bold mb-5">Sign up now</h2>
-                        <form action="{{ route('users.store') }}">
-
+                        <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <!-- First Name input -->
                             <div class="form-outline mb-4">
                                 <input type="text" class="form-control" placeholder="James" name="firstName">
@@ -68,7 +68,7 @@
                             <!-- DOB input -->
                             <div class="form-outline mb-4">
                                 <input type="date" name="dob" class="form-control" />
-                                <label class="form-label px-2">Date of Birthday</label>
+                                <label class="form-label px-2">Date of Birth</label>
                             </div>
 
                             <!-- Submit button -->
