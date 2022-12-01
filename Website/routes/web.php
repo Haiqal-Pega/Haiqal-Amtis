@@ -25,6 +25,9 @@ Route::get('/admin', [App\Http\Controllers\UsersController::class, 'admin'])->na
 Route::get('/register', [App\Http\Controllers\UsersController::class, 'create'])->name('users.register');
 Route::post('/store', [App\Http\Controllers\UsersController::class, 'store'])->name('users.store');
 
+Route::get('/Wishlists', [App\Http\Controllers\CartsController::class, 'index'])->name('carts.index');
+Route::post('/addcart/{pid}/{uid}', [App\Http\Controllers\CartsController::class, 'addCart'])->name('carts.addCart');
+
 Route::get('/index', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
 Route::get('/create', [App\Http\Controllers\ProductsController::class, 'create'])->name('products.create');
 Route::get('/store', [App\Http\Controllers\ProductsController::class, 'store'])->name('products.store');

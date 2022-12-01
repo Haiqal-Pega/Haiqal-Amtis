@@ -12,7 +12,7 @@ class ProductsController extends Controller
      * Display a listing of the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+    //  * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -24,7 +24,7 @@ class ProductsController extends Controller
      * Display a listing of the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+    //  * @return \Illuminate\Http\Response
      */
     public function admin()
     {
@@ -36,7 +36,7 @@ class ProductsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+    //  * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -48,7 +48,7 @@ class ProductsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+    //  * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -65,12 +65,33 @@ class ProductsController extends Controller
         }
 
     }
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+     */
+    public function addCart(Request $request, $pid, $uid)
+    {
+        $qty = $request->wish;
+        $timestamp = date('dd-mm-yyyy');
+
+        if(DB::insert('insert into wishlists (prod_id, user_id, qty, created_at, updated_at) values (?, ?, ?, ?, ?)', [$pid, $uid, $qty,$timestamp, $timestamp])){
+            $products = Products::find($pid);
+            $products->qty -= $qty;
+            if ($products->save()) {
+                return redirect(route('cart.admin'));
+            }
+        }
+        
+    }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
+    //  * @return \Illuminate\Http\Response
      */
     public function show(Products $products)
     {
@@ -81,7 +102,7 @@ class ProductsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
+    //  * @return \Illuminate\Http\Response
      */
     public function edit(Products $products, $id)
     {
@@ -94,7 +115,7 @@ class ProductsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
+    //  * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
@@ -124,7 +145,7 @@ class ProductsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
+    //  * @return \Illuminate\Http\Response
      */
     public function destroy(Products $products, $id)
     {
