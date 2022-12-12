@@ -45,7 +45,6 @@
             <div class="col-10 p-2">
                 <div class="card">
                     <div class="card-body">
-                        <p>sadhasda</p>
                     </div>
                 </div>
             </div>

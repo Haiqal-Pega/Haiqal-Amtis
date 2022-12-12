@@ -24,8 +24,9 @@ Route::post('/index', [App\Http\Controllers\UsersController::class, 'index'])->n
 Route::get('/admin', [App\Http\Controllers\UsersController::class, 'admin'])->name('users.admin');
 Route::get('/register', [App\Http\Controllers\UsersController::class, 'create'])->name('users.register');
 Route::post('/store', [App\Http\Controllers\UsersController::class, 'store'])->name('users.store');
+Route::get('/catalogue/{uid}', [App\Http\Controllers\UsersController::class, 'catalogue'])->name('users.catalogue');
 
-Route::get('/Wishlists', [App\Http\Controllers\CartsController::class, 'index'])->name('carts.index');
+Route::get('/Wishlists/{uid}', [App\Http\Controllers\CartsController::class, 'index'])->name('carts.index');
 Route::post('/addcart/{pid}/{uid}', [App\Http\Controllers\CartsController::class, 'addCart'])->name('carts.addCart');
 
 Route::get('/index', [App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');

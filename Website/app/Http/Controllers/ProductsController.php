@@ -150,6 +150,6 @@ class ProductsController extends Controller
     public function destroy(Products $products, $id)
     {
         Products::where('id',$id)->delete();
-        return redirect('products.admin');
+        return redirect(route('products.admin'));
     }
 }

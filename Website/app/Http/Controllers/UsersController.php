@@ -43,7 +43,18 @@ class UsersController extends Controller
         }
         return redirect(route('login'));
     }
-
+    
+    /**
+     * Display a listing of the resource.
+     * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+     */
+    public function catalogue(Request $request, $uid)
+    {
+        $users = DB::table('users')->select('*')->where('id', '=', $uid)->get();
+        $products = DB::table('products')->select('*')->get();
+        return view('users.index', compact('users','products'));
+    }
     /**
      * Display a listing of the resource.
      * @param  \Illuminate\Http\Request  $request

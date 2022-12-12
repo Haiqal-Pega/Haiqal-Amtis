@@ -53,10 +53,15 @@
                             <li class="nav-item"><a class="nav-link disabled" href="">&nbsp; |&nbsp;</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="">Home</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('users.catalogue', ['uid' => $users[0]->id]) }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Wishlist</a>
+                                {{-- <a class="nav-link" href="{{ route('carts.index',['uid' => $users[0]->id]) }}">Wishlist</a> --}}
+                                <a class="nav-link" href="{{ route('carts.index', ['uid' => $users[0]->id]) }}">Wishlist</a>
+                            </li>
+                            <li class="nav-item">
+                                {{-- <a class="nav-link" href="{{ route('carts.index',['uid' => $users[0]->id]) }}">Wishlist</a> --}}
+                                <a class="nav-link" href="{{ route('login') }}">Logout</a>
                             </li>
                         </ul>
                         <form class="d-flex">
@@ -73,35 +78,36 @@
         <div class="container-md">
             <div class="row row-cols-3">
                 @forelse ($products as $key => $prod)
-                    <form method="POST" action="{{ route('carts.addCart', ['pid'=>$prod->id , 'uid'=>$users[0]->id]) }}"
-                        enctype="multipart/form-data">
-                        @csrf
-                        <div class="col p-5">
-                            <div class="card p-3 border border-outline-primary">
-                                <div class="card-content">
-                                    <img class="card-img-top img-fluid" src="{{ url('/imgprod/' . $prod->img . '') }}"
-                                        alt="Card image cap" style="height: 20rem">
-                                    <div class="card-body">
-                                        <h4 class="card-title" id="prodname">{{ $prod->name }}</h4>
-                                        <p class="card-text">
-                                            {{ $prod->details }}.
-                                        </p>
-                                        <p class="card-text">
-                                            Price : RM{{ number_format($prod->price, 2, '.') }}
-                                        </p>
-                                        <input type="number" id="addtocart" name="wish" min="0"
+                    <div class="col p-5">
+                        <div class="card p-3 border border-outline-primary">
+                            <div class="card-content">
+                                <img class="card-img-top img-fluid" src="{{ url('/imgprod/' . $prod->img . '') }}"
+                                    alt="Card image cap" style="height: 20rem">
+                                <div class="card-body">
+                                    <h4 class="card-title" id="prodname">{{ $prod->name }}</h4>
+                                    <p class="card-text">
+                                        {{ $prod->details }}.
+                                    </p>
+                                    <p class="card-text">
+                                        Price : RM{{ number_format($prod->price, 2, '.') }}
+                                    </p>
+                                    <form method="POST"
+                                        action="{{ route('carts.addCart', ['pid' => $prod->id, 'uid' => $users[0]->id]) }}"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="number" id="addtocart" name="qty" min="0"
                                             max="{{ $prod->qty }}"
                                             class="btn btn-block border border-outline-primary" style="width: 70%"
                                             value="0">
                                         <button type="submit" class="btn btn-success me-auto" id="submit"
                                             style=""><span class="bi bi-cart"></span></button>
+                                    </form>
 
-                                        <p class="py-2">In Stock: {{ $prod->qty }}</p>
-                                    </div>
+                                    <p class="py-2">In Stock: {{ $prod->qty }}</p>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 @empty
                     No Item
                 @endforelse

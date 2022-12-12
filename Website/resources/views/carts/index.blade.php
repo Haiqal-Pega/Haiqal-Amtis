@@ -48,15 +48,21 @@
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link " href="{{-- {{ route('users.profile') }} --}}">Welcome,
-                                    {{ $users[0]->firstName }}</a>
+                                    {{ $users->firstName }}</a>
                             </li>
                             <li class="nav-item"><a class="nav-link disabled" href="#">&nbsp; |&nbsp;</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{-- {{ route('users.catalogue') }} --}}">Home</a>
+                                <a class="nav-link " aria-current="page"
+                                    href="{{ route('users.catalogue', ['uid' => $users->id]) }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Wishlist</a>
+                                <a class="nav-link active"
+                                    href="{{ route('carts.index', ['uid' => $users->id]) }}">Wishlist</a>
+                            </li>
+                            <li class="nav-item">
+                                {{-- <a class="nav-link" href="{{ route('carts.index',['uid' => $users[0]->id]) }}">Wishlist</a> --}}
+                                <a class="nav-link" href="{{ route('login') }}">Logout</a>
                             </li>
                         </ul>
                         <form class="d-flex">
@@ -68,6 +74,31 @@
             </nav>
         </div>
     </header>
+    <div class="container border border-outline-info">
+        <table class="table table-hover">
+            <tr>
+                <th>No.</th>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Price(RM)</th>
+                <th>Quantity</th>
+            </tr>
+            @forelse ($carts as $key => $cart)
+                <tr>
+                    <td>{{ (int) $key + 1 }}</td>
+                    <td><img src="{{ url('/imgprod/' . $cart->img . '') }}" alt="{{ $cart->img }}"
+                            style="max-width: 135px"></td>
+                    <td>{{ $cart->name }}</td>
+                    <td>{{ $cart->price }}</td>
+                    <td>{{ $cart->cqty }}</td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="5" class="text-center h5 py-5">Nothing Here? Go to <b><a href="{{ route('users.catalogue', ['uid' => $users->id]) }}">Catalogue</a></b>  and Shop!</td>
+                </tr>
+            @endforelse
+        </table>
+    </div>
 
 </body>
 
