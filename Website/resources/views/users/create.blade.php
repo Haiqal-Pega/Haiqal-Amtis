@@ -75,6 +75,7 @@
                             <button type="submit" class="btn btn-primary mb-4" style="width: 100%">
                                 Sign up
                             </button>
+                            <p class="text-center">Already Sign Up? <a href="{{ route('login') }}">Login Here</a></p>
                         </form>
                     </div>
                 </div>
